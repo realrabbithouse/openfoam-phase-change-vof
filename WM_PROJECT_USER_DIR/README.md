@@ -1,4 +1,4 @@
-### 简介
+## 简介
 
 一个可压缩气液两相流相变传热与传质求解器
 
@@ -6,12 +6,9 @@
 
 OpenFOAM-v2006
 
-**applications**
+`applications`: 求解器
 
-求解器主函数
-**src**
+`src`: phase change model
 
-相变模型
-
-compressibleInterPhaseTransportModel.H compressibleInterPhaseTransportModel.C & interfaceProperties.H & interfaceProperties.C
-用于替换OpenFOAM的源代码, 替换前先备份!
+`compressibleInterPhaseTransportModel.H` `compressibleInterPhaseTransportModel.C` `interfaceProperties.H` `interfaceProperties.C`
+替换 OpenFOAM 源码文件

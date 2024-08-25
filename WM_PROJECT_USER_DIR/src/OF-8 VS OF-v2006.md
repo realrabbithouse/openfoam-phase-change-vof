@@ -12,6 +12,8 @@ twoPhaseMixtureThermo
 VoFphaseCompressibleTurbulenceModels
 来自于OpenFOAM源代码, 我仅仅做了少许的修改
 
-    -I$(LIB_SRC)/transportModels/compressible/lnInclude \
-    	-lcompressibleTransportModels \
-    	    -lspecie \
+```cmake
+-I$(LIB_SRC)/transportModels/compressible/lnInclude \
+	-lcompressibleTransportModels \
+	    -lspecie \
+```
