@@ -1,0 +1,5432 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language chinese-simplified
+\language_package default
+\inputencoding utf8-cjk
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.91cm
+\topmargin 2.54cm
+\rightmargin 1.91cm
+\bottommargin 2.54cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\noindent
+
+\size small
+When Rabbit Rules the World...
+\end_layout
+
+\begin_layout Date
+\noindent
+
+\size small
+No More Economic Crisis, Everybody Loves Yoghourt
+\end_layout
+
+\begin_layout Quote
+
+\size footnotesize
+Only field that need to be solved by a linear solver needs boundary conditions.
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\size small
+Physical Modelling
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Mathematics, etc.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Solenoidal vector field (divergence-free vector field): 
+\begin_inset Formula $\nabla\cdot\boldsymbol{v}=0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Irrotational vector field (curl-free vector field): 
+\begin_inset Formula $\nabla\times\boldsymbol{v}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $\nabla\phi$
+\end_inset
+
+ is a irrotational vector field, since 
+\begin_inset Formula $\nabla\times\nabla\phi=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $\nabla\times\phi$
+\end_inset
+
+ is a solenoidal vector field, since 
+\begin_inset Formula $\nabla\cdot\nabla\times\phi=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+mixedFvPatchField
+\emph default
+: 
+\begin_inset Formula $x_{p}=\omega x_{c}+\left(1-\omega\right)\frac{\left(\nabla_{\perp}x\right)_{p}}{\Delta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $L_{p}-\mathrm{norm}$
+\end_inset
+
+ definition: 
+\begin_inset Formula $\left\Vert \boldsymbol{x}\right\Vert _{p}=\left(\left|x_{1}\right|^{p}+\left|x_{2}\right|^{p}+\cdots+\left|x_{n}\right|^{p}\right)^{\frac{1}{p}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $L_{\infty}\mathrm{-norm}$
+\end_inset
+
+ definition: 
+\begin_inset Formula $\left\Vert \boldsymbol{x}\right\Vert _{\infty}=\max\left\{ \left|x_{1}\right|,\left|x_{2}\right|,\cdots,\left|x_{n}\right|\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+A little vector operations:
+\begin_inset Formula 
+\[
+\nabla\cdot\left(s\boldsymbol{v}\right)=s\nabla\cdot\boldsymbol{v}+\boldsymbol{v}\cdot\nabla s
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\times\left(s\boldsymbol{v}\right)=s\nabla\times\boldsymbol{v}+\nabla s\times\boldsymbol{v}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\cdot\left(\nabla\boldsymbol{v}\right)^{T}=\nabla\left(\nabla\cdot\boldsymbol{v}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Reynolds Transport Theorem
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Let 
+\begin_inset Formula $B$
+\end_inset
+
+ be any property of the fluid (mass, momentum, energy, etc.) and let 
+\begin_inset Formula $b=dB/dm$
+\end_inset
+
+ be the intensive value of 
+\begin_inset Formula $B$
+\end_inset
+
+ in any small element of the fluid.
+ For a fixed material control volume, we can get:
+\begin_inset Formula 
+\[
+\left(\frac{dB}{dt}\right)_{MV}=\int_{V}\left[\frac{\partial\left(\rho b\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}b\right)\right]dV=\int_{V}\left[\frac{d\left(\rho b\right)}{dt}+\rho b\nabla\cdot\boldsymbol{U}\right]dV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\emph on
+Leibniz Integral Rule
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The Leibniz integral rule gives a formula for differentiating a definite
+ integral whose limits are functions of the differential variable:
+\begin_inset Formula 
+\[
+\frac{d}{dt}\int_{a}^{b}\phi\left(x,t\right)dx=\int_{a}^{b}\frac{\partial\phi}{\partial t}dx+\phi\left(b\left(t\right),t\right)\frac{\partial b}{\partial t}-\phi\left(a\left(t\right),t\right)\frac{\partial a}{\partial t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Applying conservation of mass, the following relationship holds for any
+ tensor 
+\begin_inset Formula $\boldsymbol{Q}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho\frac{D\boldsymbol{Q}}{Dt}\equiv\frac{\partial\left(\rho\boldsymbol{Q}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}\boldsymbol{Q}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\size small
+\noun on
+Tips
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The set of equations of the volume-of-fluid method is in principle equivalent
+ with the set of equations of the homogeneous model, and the homogeneous
+ model is the most simple model within the continuous fields approach.
+ It assumes that the phases move with the same velocity so that:
+\begin_inset Formula 
+\[
+\boldsymbol{v}_{m}=\bar{\boldsymbol{v}}_{1}^{V_{1}}=\bar{\boldsymbol{v}}_{2}^{V_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+For volume-of-fluid voelcity representing as volume fraction average, it
+ means:
+\begin_inset Formula 
+\[
+\boldsymbol{v}_{m}=\alpha_{1}\bar{\boldsymbol{v}}_{1}^{V_{1}}+\alpha_{2}\bar{\boldsymbol{v}}_{2}^{V_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+When representing as center-of-mass velocity, it means:
+\begin_inset Formula 
+\[
+\boldsymbol{v}_{m}=\frac{\alpha_{1}\rho_{1}\bar{\boldsymbol{v}}_{1}^{V_{1}}+\alpha_{2}\rho_{2}\bar{\boldsymbol{v}}_{2}^{V_{2}}}{\alpha_{1}\rho_{1}+\alpha_{2}\rho_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Thermal diffusivity 
+\begin_inset Formula $\alpha_{h}$
+\end_inset
+
+ in OpenFOAM
+\emph on
+ thermophysicalModels
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{Pr}=\frac{\mu}{\alpha_{h}}=\frac{\mu/\rho}{\alpha_{h}/\rho}=\frac{\nu}{\alpha}=\frac{\mu c_{p}}{k}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\alpha_{h}=\frac{k}{c_{p}},\;\;\;\alpha=\frac{k}{\rho c_{p}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+Common Dimensions (SI)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+thermal conductivity 
+\begin_inset Formula $k$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mathrm{W/m\cdot K}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+[1 1 -3 -1 0 0 0]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+specific thermal diffusivity 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mathrm{m^{2}/s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+[0 2 -1 0 0 0 0]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+thermal diffusivity 
+\begin_inset Formula $\alpha_{h}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mathrm{kg/m\cdot s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+[1 -1 -1 0 0 0 0]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+dynamic viscosity 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mathrm{N\cdot s/m^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+[1 -1 -1 0 0 0 0]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+kinematic viscosity 
+\begin_inset Formula $\nu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mathrm{m^{2}/s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+[0 2 -1 0 0 0 0]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+specific heat 
+\begin_inset Formula $c_{p}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\mathrm{J/kg\cdot K}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+[0 2 -2 -1 0 0 0]
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Conservation of Linear Momentum
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Conservative form:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{UU}\right)=\boldsymbol{f_{s}+\boldsymbol{f_{b}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $\text{\ensuremath{\boldsymbol{f_{s}}}}$
+\end_inset
+
+ for the surface forces, and 
+\begin_inset Formula $\boldsymbol{f_{b}}$
+\end_inset
+
+ representing the body forces.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Surface forces:
+\begin_inset Formula 
+\[
+\boldsymbol{f_{s}=-}\nabla p+\nabla\cdot\boldsymbol{\tau}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $\boldsymbol{\tau}$
+\end_inset
+
+ is the deviatoric or viscous stress tensor
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\boldsymbol{\tau}$
+\end_inset
+
+ is traceless: 
+\begin_inset Formula $\mathrm{tr\left(\boldsymbol{\tau}\right)=0}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+For Newtonian fluids, the stress tensor is a linear function of the strain
+ rate:
+\begin_inset Formula 
+\[
+\boldsymbol{\tau=}\left(2\mu\boldsymbol{D}+\left[-\frac{2}{3}\mu+\kappa\right]\left(\nabla\cdot\boldsymbol{U}\right)\boldsymbol{I}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is the molecular viscosity (dynamic viscosity), and 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is described as bulk viscosity.
+ The other term in the normal stress components takes the value 
+\begin_inset Formula $\frac{2}{3}\mu$
+\end_inset
+
+, which many authors refers to the secondary viscosity, dilatation term
+ or first Lames coefficient
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+These definitions (
+\begin_inset Formula $\kappa$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda=\frac{2}{3}\mu$
+\end_inset
+
+) is a little confusing, cause there exists other different definitions
+ in the literature.
+\end_layout
+
+\end_inset
+
+.
+ 
+\begin_inset Formula $\boldsymbol{D}$
+\end_inset
+
+ is the strain-rate tensor:
+\begin_inset Formula 
+\[
+\boldsymbol{D}=\frac{1}{2}\left[\nabla\boldsymbol{U}+\left(\nabla\boldsymbol{U}\right)^{T}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}=\mathrm{tr}\left(\nabla\boldsymbol{U}\right)=\mathrm{tr}\left(\left(\nabla\boldsymbol{U}\right)^{T}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+If we use 
+\begin_inset Formula $\kappa=0$
+\end_inset
+
+, we get the common Navier-Stokes equation as:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{UU}\right)=\nabla\cdot\left(\mu\nabla\boldsymbol{U}\right)-\nabla p+\nabla\cdot\left[\mu\left(\nabla\boldsymbol{U}\right)^{T}-\frac{2}{3}\mu\left(\nabla\cdot\boldsymbol{U}\right)\boldsymbol{I}\right]+\boldsymbol{f_{b}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where the term 
+\begin_inset Formula $-\frac{2}{3}\mu\left(\nabla\cdot\boldsymbol{U}\right)$
+\end_inset
+
+ represents expansion and compression phenomena.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Anther form to put the pressure term into the viscous stress tensor:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{UU}\right)=\nabla\cdot\boldsymbol{\sigma}+\boldsymbol{f_{b}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\boldsymbol{\sigma}$
+\end_inset
+
+ is called Cauchy (mechanical) stress tensor:
+\begin_inset Formula 
+\[
+\boldsymbol{\sigma}=\left(2\mu\boldsymbol{D}+\left\{ \left[-\frac{2}{3}\mu+\kappa\right]\nabla\cdot\boldsymbol{U}-p\right\} \boldsymbol{I}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Incompressible, constant viscosity momentum equation in OpenFOAM:
+\begin_inset Formula 
+\[
+\frac{\partial\boldsymbol{U}}{\partial t}+\nabla\cdot\left(\boldsymbol{UU}\right)-\nu\nabla^{2}\boldsymbol{U}=-\nabla p+\boldsymbol{f_{b}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The pressure here is the mass average pressure, so as the body force:
+\begin_inset Formula 
+\[
+p=\frac{p}{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\size small
+Energy Equantion in OpenFOAM
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Basic Thermodynamics
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Relation between enthalpy (
+\begin_inset Formula $H,h$
+\end_inset
+
+) and internal energy (
+\begin_inset Formula $E,e$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+H=E+pV
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+h=e+\frac{p}{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Universal gas constant: 
+\begin_inset Formula 
+\[
+R=8.314\mathrm{J\cdot K^{-1}\cdot mol^{-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Specific gas constant:
+\begin_inset Formula 
+\[
+R_{specific}=\frac{R}{M}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Take hydrogen as an example:
+\begin_inset Formula 
+\[
+R_{specific}=\frac{8.314\:\mathrm{J\cdot K^{-1}\cdot mol^{-1}}}{0.002016\:\mathrm{kg\cdot mol^{-1}}}=4124\:\mathrm{J\cdot kg^{-1}\cdot K^{-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Compressibility 
+\begin_inset Formula $\psi$
+\end_inset
+
+ for ideal gas:
+\begin_inset Formula 
+\[
+\psi=\frac{\partial\rho}{\partial p}=\frac{1}{R_{specific}T}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Another important relationship comes from thermodynamics.
+ Mayer's relation relates the specific gas constant to the specific heats
+ for a calorically perfect gas and a thermally perfect gas.
+\begin_inset Formula 
+\[
+R_{specific}=c_{p}-c_{v}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Clausius-Clapeyron equation:
+\begin_inset Formula 
+\[
+T_{sat}=\left(\frac{1}{T_{0}}-\frac{R_{specific}\ln\left(\frac{p}{p_{0}}\right)}{L_{v}}\right)^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Mechanical Power
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The rate of change of mechanical, or kinetic, energy is
+\begin_inset Formula 
+\[
+\rho\frac{DK}{Dt}\equiv\rho\frac{D\left(\left|\boldsymbol{U}\right|^{2}/2\right)}{Dt}\equiv\rho\frac{D\boldsymbol{U}}{Dt}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The power flux, or rate of change of strain energy, is
+\begin_inset Formula 
+\[
+\nabla\cdot\left(\boldsymbol{\sigma}\cdot\boldsymbol{U}\right)\equiv\left(\nabla\cdot\boldsymbol{\sigma}\right)\cdot\boldsymbol{U}+\boldsymbol{\sigma}\colon\nabla\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\boldsymbol{\sigma}$
+\end_inset
+
+ is the mechanical stress tensor.
+ The power source, or rate of change of potential energy, is
+\begin_inset Formula 
+\[
+\rho\boldsymbol{g}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Thermodynamic Power
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The rate of change of thermal, or internal, energy is
+\begin_inset Formula 
+\[
+\rho\frac{De}{Dt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The heat flux is
+\begin_inset Formula 
+\[
+-\nabla\cdot\boldsymbol{q}
+\]
+
+\end_inset
+
+where the heat flux 
+\begin_inset Formula $\boldsymbol{q}=-\alpha_{eff}\nabla e=-k_{eff}\nabla T$
+\end_inset
+
+, and the effective thermal diffusivity 
+\begin_inset Formula $\alpha_{eff}$
+\end_inset
+
+ is the sum of laminar and turbulent thermal diffusivities.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The heat source is
+\begin_inset Formula 
+\[
+\rho r
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $r$
+\end_inset
+
+ is any specific heat source.
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Energy Equation
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Conservation of energy:
+\begin_inset Formula 
+\[
+\rho\frac{De}{Dt}+\rho\frac{DK}{Dt}=-\nabla\cdot\boldsymbol{q}+\rho r+\nabla\cdot\left(\boldsymbol{\sigma}\cdot\boldsymbol{U}\right)+\rho\boldsymbol{g}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\boldsymbol{q}$
+\end_inset
+
+ is the heat flux, 
+\begin_inset Formula $\boldsymbol{q}=-k_{eff}\nabla T=-\alpha_{eff}\nabla e$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\sigma}$
+\end_inset
+
+ is the mechanical stress tensor, to reduce the mechanical contributions
+ to 
+\begin_inset Formula $\boldsymbol{\sigma}\colon\nabla\boldsymbol{U}$
+\end_inset
+
+, which represents the contribution of mechanical power to internal energy:
+\begin_inset Formula 
+\[
+\rho\frac{De}{Dt}=-\nabla\cdot\boldsymbol{q}+\rho r+\boldsymbol{\sigma}\colon\nabla\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Energy equation based on internal energy:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho e\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}e\right)+\frac{\partial\left(\rho K\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}K\right)+\nabla\cdot\left(\boldsymbol{U}p\right)=-\nabla\cdot\boldsymbol{q}+\nabla\cdot\left(\boldsymbol{\tau}\cdot\boldsymbol{U}\right)+\rho r+\rho\boldsymbol{g}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Energy equation based on enthalpy:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho h\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}h\right)+\frac{\partial\left(\rho K\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}K\right)+\frac{\partial p}{\partial t}=-\nabla\cdot\boldsymbol{q}+\nabla\cdot\left(\boldsymbol{\tau}\cdot\boldsymbol{U}\right)+\rho r+\rho\boldsymbol{g}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Total energy can be defined as 
+\begin_inset Formula $E\equiv e+K$
+\end_inset
+
+, then:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho E\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}E\right)+\nabla\cdot\left(\boldsymbol{U}p\right)=-\nabla\cdot\boldsymbol{q}+\nabla\cdot\left(\boldsymbol{\tau}\cdot\boldsymbol{U}\right)+\rho r+\rho\boldsymbol{g}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The energy equation is generally implemented in the form of internal energy
+ or enthalpy, without mechanical sources 
+\begin_inset Formula $\nabla\cdot\left(\boldsymbol{\tau}\cdot\boldsymbol{U}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\rho\boldsymbol{g}\cdot\boldsymbol{U}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+More commonly, the energy equation is implemented in terms of both internal
+ energy 
+\begin_inset Formula $e$
+\end_inset
+
+ and enthalpy 
+\begin_inset Formula $h$
+\end_inset
+
+, allowing the user to choose the solution variable, 
+\begin_inset Formula $e$
+\end_inset
+
+ or 
+\begin_inset Formula $h$
+\end_inset
+
+, at run time.
+ For example, the rhoPimpleFoam solver has the following implementation:
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+volScalarField& he = thermo.he();
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+fvScalarMatrix EEqn
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+(
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\size small
+// phi is mass flux, not volumetric flux here
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+fvm::ddt(rho,he) + fvm::div(phi,he)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
++ fvc::ddt(rho,K) + fvc::div(phi,K)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
++ (
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\size small
+he.name() == "e"
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+? fvc::div
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+(
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\size small
+fvc::absolute(phi/fvc::interpolate(rho),U),
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+p,
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+"div(phiv,p)"
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\size small
+)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+: -dpdt
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\size small
+  )
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+- fvm::laplacian(turbulence->alphaEff(),he)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+== fvOptions(rho,he)
+\end_layout
+
+\end_deeper
+\begin_layout LyX-Code
+
+\size small
+);
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The 5th term switches between 
+\begin_inset Formula $\nabla\cdot\left(\boldsymbol{U}p\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $-\partial p/\partial t$
+\end_inset
+
+ depending on the solution variable chosen by the user.
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+RAS Turbulence Modelling
+\end_layout
+
+\begin_layout Standard
+
+\size small
+RANS equation:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\bar{\boldsymbol{U}}\right)}{\partial t}+\nabla\cdot\left(\rho\bar{\boldsymbol{U}}\bar{\boldsymbol{U}}\right)=\nabla\cdot\left(\mu_{eff}\left\{ 2\bar{\boldsymbol{D}}-\frac{2}{3}\left(\nabla\cdot\bar{\boldsymbol{U}}\right)\boldsymbol{I}\right\} \right)+\rho\boldsymbol{g}-\nabla p^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\bar{\boldsymbol{D}}=\frac{1}{2}\left(\nabla\bar{\boldsymbol{U}}+\left(\nabla\bar{\boldsymbol{U}}\right)^{T}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $p^{*}=\bar{p}+\frac{2}{3}\rho k$
+\end_inset
+
+, and 
+\begin_inset Formula $k$
+\end_inset
+
+ is the turbulent kinematic energy here.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Incompressibe RANS euqation in OpenFOAM:
+\begin_inset Formula 
+\[
+\frac{\partial\bar{\boldsymbol{U}}}{\partial t}+\nabla\cdot\left(\bar{\boldsymbol{U}}\bar{\boldsymbol{U}}\right)=\nu_{eff}\nabla^{2}\bar{\boldsymbol{U}}+\nabla\cdot\left(\nu_{eff}\mathrm{dev2}\left(\left(\nabla\bar{\boldsymbol{U}}\right)^{T}\right)\right)+\rho\boldsymbol{g}-\nabla p^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\mathrm{dev2}\left(\left(\nabla\bar{\boldsymbol{U}}\right)^{T}\right)$
+\end_inset
+
+ is the deviatoric part of 
+\begin_inset Formula $\left(\nabla\bar{\boldsymbol{U}}\right)^{T}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathrm{dev2}\left(\left(\nabla\bar{\boldsymbol{U}}\right)^{T}\right)=\left(\nabla\bar{\boldsymbol{U}}\right)^{T}-\frac{2}{3}\mathrm{tr}\left(\left(\nabla\bar{\boldsymbol{U}}\right)^{T}\right)\boldsymbol{I}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The effective Reynolds stress 
+\begin_inset Formula $\boldsymbol{R}_{eff}$
+\end_inset
+
+ (take incompressible as example):
+\begin_inset Formula 
+\[
+\boldsymbol{R}_{eff}=\nu_{eff}\left[\nabla\bar{\boldsymbol{U}}+\left(\nabla\bar{\boldsymbol{U}}\right)^{T}-\frac{2}{3}\left(\nabla\cdot\bar{\boldsymbol{U}}\right)\boldsymbol{I}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{R}_{eff}=\nu_{eff}\nabla^{2}\bar{\boldsymbol{U}}+\nabla\cdot\left(\nu_{eff}\mathrm{dev2}\left(\left(\nabla\bar{\boldsymbol{U}}\right)^{T}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Compressible RANS equation in OpenFOAM
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The quantities is Favre averaged in compressible model rather than Reynolds
+ averaged:
+\begin_inset Formula 
+\[
+\tilde{\phi}=\frac{1}{\bar{\rho}}\lim_{T\rightarrow\infty}\int_{t}^{t+T}\rho\left(t,x\right)\phi\left(t,x\right)dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The continuity equation is:
+\begin_inset Formula 
+\[
+\frac{\partial\bar{\rho}}{\partial t}+\nabla\cdot\left(\bar{\rho}\tilde{\boldsymbol{U}}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\bar{\rho}\tilde{\boldsymbol{U}}\right)}{\partial t}+\nabla\cdot\left(\bar{\rho}\tilde{\boldsymbol{U}}\tilde{\boldsymbol{U}}\right)=\mu_{eff}\nabla^{2}\tilde{\boldsymbol{U}}+\nabla\cdot\left(\mu_{eff}\mathrm{dev2}\left(\left(\nabla\tilde{\boldsymbol{U}}\right)^{T}\right)\right)+\bar{\rho}\boldsymbol{g}-\nabla\left(\bar{p}+\frac{2}{3}\bar{\rho}k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\size small
+Rotating Frame of Refrence
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Notation: 
+\begin_inset Formula $I$
+\end_inset
+
+ for inertial, 
+\begin_inset Formula $R$
+\end_inset
+
+ for retating.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+For a general vector 
+\begin_inset Formula $\vec{A}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left[\frac{d\vec{A}}{dt}\right]_{I}=\left[\frac{d\vec{A}}{dt}\right]_{R}+\boldsymbol{\Omega}\times\vec{A}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+For a position vector, we have:
+\begin_inset Formula 
+\[
+\boldsymbol{U}_{I}=\boldsymbol{U}_{R}+\boldsymbol{\Omega}\times\boldsymbol{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The acceleration can be expressed as:
+\begin_inset Formula 
+\[
+\left[\frac{d\boldsymbol{U}_{I}}{dt}\right]_{I}=\left[\frac{d\boldsymbol{U}_{R}}{dt}\right]_{R}+\frac{d\boldsymbol{\Omega}}{dt}\times\boldsymbol{r}+2\boldsymbol{\Omega}\times\boldsymbol{U}_{R}+\boldsymbol{\Omega}\times\boldsymbol{\Omega}\times\boldsymbol{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Mathematical magic:
+\begin_inset Formula 
+\[
+\nabla\cdot\left(\boldsymbol{\Omega}\times\boldsymbol{r}\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\left(\boldsymbol{\Omega}\times\boldsymbol{r}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Navier-Stokes equations in the relative frame with relative velocity (SRF)
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}_{R}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}_{R}\boldsymbol{U}_{R}\right)+\rho\left[\frac{d\boldsymbol{\Omega}}{dt}\times\boldsymbol{r}+2\boldsymbol{\Omega}\times\boldsymbol{U}_{R}+\boldsymbol{\Omega}\times\boldsymbol{\Omega}\times\boldsymbol{r}\right]=-\nabla p+\nabla\cdot\left(\mu\nabla\boldsymbol{U}_{R}\right)+\nabla\cdot\left(\mu\mathrm{dev2}\left(\left(\nabla\boldsymbol{U}_{R}\right)^{T}\right)\right)+\boldsymbol{f}_{b}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}_{R}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\mathrm{dev2}\left(\left(\nabla\boldsymbol{U}_{R}\right)^{T}\right)=\left(\nabla\boldsymbol{U}_{R}\right)^{T}-\frac{2}{3}\mathrm{tr}\left(\left(\nabla\boldsymbol{U}_{R}\right)^{T}\right)\boldsymbol{I}$
+\end_inset
+
+.
+ For constant rotating angular velocity, 
+\begin_inset Formula $\frac{d\boldsymbol{\Omega}}{dt}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Navier-Stokes equations in the relative frame with absolute velocity (MRF)
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}_{I}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}_{R}\boldsymbol{U}_{I}\right)+\rho\left[\frac{d\boldsymbol{\Omega}}{dt}\times\boldsymbol{r}+\boldsymbol{\Omega}\times\boldsymbol{U}_{I}\right]=-\nabla p+\nabla\cdot\left(\mu\nabla\boldsymbol{U}_{I}\right)+\nabla\cdot\left(\mu\mathrm{dev2}\left(\left(\nabla\boldsymbol{U}_{I}\right)^{T}\right)\right)+\boldsymbol{f}_{b}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}_{I}\right)=\frac{\partial\rho}{\partial t}+\nabla\cdot\left[\rho\left(\boldsymbol{U}_{R}+\boldsymbol{\Omega}\times\boldsymbol{r}\right)\right]=\frac{\partial\rho}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}_{R}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Incompressible VoF Considering Phase Change
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+General Implementation
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Phase fraction transport equation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Take Merkle mass transfer model as an example:
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\dot{m}^{-}=\frac{C_{v}\rho_{l}}{\frac{1}{2}\rho_{v}U_{\infty}^{2}t_{\infty}}\alpha\min\left[0,p-p_{sat}\right]\;\;\;\dot{m}^{-}<0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\dot{m}^{+}=\frac{C_{c}}{\frac{1}{2}U_{\infty}^{2}t_{\infty}}\left(1-\alpha\right)\max\left[0,p-p_{sat}\right]\;\;\;\dot{m}^{+}>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+where 
+\begin_inset Formula $\dot{m}^{-}$
+\end_inset
+
+ represents the vaporisation, and 
+\begin_inset Formula $\dot{m}^{+}$
+\end_inset
+
+ represents the condensation because 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ represents liquid phase fraction here.
+ The specific mass transfer rate is computed as 
+\begin_inset Formula $\dot{m}=\dot{m}^{-}+\dot{m}^{+}.$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{l}}{\partial t}+\nabla\cdot\left(\boldsymbol{U}\alpha_{l}\right)=\frac{\dot{m}}{\rho_{l}}\;\mathrm{\;\;\left[s^{-1}\right]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Add an artificial interface compression term:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{l}}{\partial t}+\nabla\cdot\left(\boldsymbol{U}\alpha_{l}\right)+\nabla\cdot\left(\alpha_{l}\left(1-\alpha_{l}\right)\boldsymbol{U}_{c}\right)=\frac{\dot{m}}{\rho_{l}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\boldsymbol{U}_{c}=\boldsymbol{U}_{r}=\boldsymbol{U}_{l}-\boldsymbol{U}_{v}$
+\end_inset
+
+ is the relative velocity between two phases, designated as the 'compression
+ velocity'.
+ The compression velocity at cell faces in OpenFOAM can be determined as
+ follows:
+\begin_inset Formula 
+\[
+\boldsymbol{U}_{c,f}=n_{f}\cdot\min\left[C_{\alpha}\frac{\left|\phi\right|}{\left|\boldsymbol{S}_{f}\right|},\max\left(\frac{\left|\phi\right|}{\left|\boldsymbol{S}_{f}\right|}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is the volumetric flux, 
+\begin_inset Formula $n_{f}$
+\end_inset
+
+ is the face flux of the interface unit normal vector and is given by:
+\begin_inset Formula 
+\[
+n_{f}=\frac{\left(\nabla\alpha\right)_{f}}{\left|\left(\nabla\alpha\right)_{f}+\delta_{n}\right|}\cdot\boldsymbol{S}_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Continuity equation:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}=\left(\frac{1}{\rho_{l}}-\frac{1}{\rho_{v}}\right)\dot{m}\;\;\;\left[\mathrm{s^{-1}}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Phase fraction transport equation, implicit formulation:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{l}}{\partial t}+\nabla\cdot\left(\alpha_{l}\boldsymbol{U}\right)=\alpha_{l}\left(\nabla\cdot\boldsymbol{U}\right)-\alpha_{l}\left(\nabla\cdot\boldsymbol{U}\right)+\frac{\dot{m}}{\rho_{l}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{l}}{\partial t}+\nabla\cdot\left(\alpha_{l}\boldsymbol{U}\right)=\alpha_{l}\left(\nabla\cdot\boldsymbol{U}\right)-\alpha_{l}\left(\dot{m}\left[\frac{1}{\rho_{l}}-\frac{1}{\rho_{v}}\right]\right)+\frac{\dot{m}}{\rho_{l}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{l}}{\partial t}+\nabla\cdot\left(\alpha_{l}\boldsymbol{U}\right)=\alpha_{l}\left(\nabla\cdot\boldsymbol{U}\right)+\dot{m}\left[\frac{1}{\rho_{l}}-\alpha_{l}\left(\frac{1}{\rho_{l}}-\frac{1}{\rho_{v}}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Momentum Equation:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U\boldsymbol{U}}\right)=-\nabla p+\nabla\cdot\left[\mu\left(\nabla\boldsymbol{U}+\nabla\boldsymbol{U^{T}}\right)-\frac{2}{3}\mu\left(\nabla\cdot\boldsymbol{U}\right)\boldsymbol{I}\right]+\rho\boldsymbol{g}+\sigma\kappa\nabla\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+A more applicable form for momentum (only applicable in incompressible and
+ no phase change!):
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U\boldsymbol{U}}\right)-\nabla\left(\mu\nabla\boldsymbol{U}\right)-\nabla\boldsymbol{U}\cdot\nabla\mu=-\nabla p_{rgh}-\boldsymbol{g\cdot\boldsymbol{x}}\nabla\rho+\sigma\kappa\nabla\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+A more compact form for momentum:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U\boldsymbol{U}}\right)=-\nabla p_{rgh}+\nabla\cdot\boldsymbol{\tau}_{eff}-\boldsymbol{g\cdot\boldsymbol{x}}\nabla\rho+\sigma\kappa\nabla\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $\boldsymbol{\tau}_{eff}$
+\end_inset
+
+ represents the generic stress tensor which incorporates turbulent effects.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Energy equation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $k$
+\end_inset
+
+ is the thermal conductivity, and thermal diffusivity is the thermal conductivit
+y divided by density and specific heat capacity at constant pressure:
+\begin_inset Formula 
+\[
+\alpha=\frac{k}{\rho c_{p}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+The Prandtl number (Pr) is defined as the ratio of momentum diffusivity
+ to thermal diffusivity:
+\begin_inset Formula 
+\[
+\Pr=\frac{\nu}{\alpha}=\frac{c_{p}\mu}{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho c_{p}\left(\frac{\partial T}{\partial t}+\nabla\cdot\left(\boldsymbol{U}T\right)\right)=\nabla\cdot\left(k\nabla T\right)+\dot{q}_{pc}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\dot{q}_{pc}=L_{v}\dot{m}$
+\end_inset
+
+, more precisely speaking, 
+\begin_inset Formula $\dot{q}_{pc}=\dot{m}\left(L_{v}+\text{\left(c_{p,l}-c_{p,v}\right)\left(T_{sat}-T\right)}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Code inside Merkle Model
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{mcCoeff\_}=\frac{C_{c}}{\frac{1}{2}U_{\infty}^{2}t_{\infty}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{mvCoeff\_}=\frac{C_{v}\rho_{1}}{\frac{1}{2}U_{\infty}^{2}t_{\infty}\rho_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\emph on
+mcCoef_
+\emph default
+ is condensation coefficient and 
+\emph on
+mvCoeff_
+\emph default
+ is vaporization coefficient, 
+\begin_inset Formula $C_{c}>0,C_{v}>0$
+\end_inset
+
+, so 
+\begin_inset Formula $\mathrm{mcCoeff\_}>0,\mathrm{mvCoeff\_}>0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\mathrm{mDotAlphal}=\begin{cases}
+\begin{array}{c}
+\mathrm{mcCoeff\_}\cdot\max\left[\left(p-p_{sat}\right),0\right]\\
+\mathrm{mvCoeff\_}\cdot\min\left[\left(p-p_{sat}\right),0\right]
+\end{array} & \begin{array}{c}
+p\geq p_{sat}\\
+p<p_{sat}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where condensation can be represented as 
+\begin_inset Formula $\dot{m}^{+}=\mathrm{mDotAlphal[0]}\cdot\left(1-\alpha_{1}\right)$
+\end_inset
+
+, and evaporization is 
+\begin_inset Formula $\dot{m}^{-}=\mathrm{mDotAlphal[1]}\cdot\alpha_{1}$
+\end_inset
+
+.
+ Notice that 
+\begin_inset Formula $\dot{m}^{+}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{m}^{-}<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{mDotP}=\begin{cases}
+\begin{array}{c}
+\mathrm{mcCoeff\_}\cdot\left(1-\alpha_{1}\right)\\
+-\mathrm{mvCoeff\_}\cdot\alpha_{1}
+\end{array} & \begin{array}{c}
+p\geq p_{sat}\\
+p<p_{sat}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+To the same way, condensation can be represented as 
+\begin_inset Formula $\dot{m}^{+}=\mathrm{mDotP[0]}\cdot\max\left[\left(p-p_{sat}\right),0\right]$
+\end_inset
+
+, and evaporization is 
+\begin_inset Formula $\dot{m}^{-}=-\mathrm{mDotP[1]}\cdot\min\left[\left(p-p_{sat}\right),0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{vDotAlphal=}\mathrm{mDotAlphal}\cdot\left(\frac{1}{\rho_{1}}-\alpha_{1}\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{vDotP}=\mathrm{mDotP}\cdot\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{m}=\dot{m}^{+}+\dot{m}^{-}=\mathrm{mDotAlphal[0]}\cdot\left(1-\alpha_{1}\right)+\mathrm{mDotAlphal[1]}\cdot\alpha_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Code Instruction
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Pair objects:
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\dot{m}_{\alpha}$
+\end_inset
+
+ for mDotAlphal (mDotAlphal[0] > 0, mDotAplhal[1] < 0);
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\dot{m}_{CE}$
+\end_inset
+
+ for mDot (mDot[0] > 0, mDot[1] < 0);
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\dot{m}_{\Delta T}$
+\end_inset
+
+ for mDotDeltaT (mDotDeltaT[0] > 0, mDotDeltaT[1] > 0);
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\dot{v}_{\alpha}$
+\end_inset
+
+ for vDotAlphal (vDotAlphal[0] > 0, vDotAlphal[1] < 0);
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\dot{v}_{CE}$
+\end_inset
+
+ for vDot (vDot[0] > 0, vDot[1] > 0).
+\end_layout
+
+\begin_layout Standard
+
+\size small
+General relations:
+\begin_inset Formula 
+\[
+\dot{m}=\left(1-\alpha_{1}\right)\cdot\mathrm{mDotAlphal[0]}+\alpha_{1}\cdot\mathrm{mDotAlph1[1]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{m}=\mathrm{mDot}[0]+\mathrm{mDot}[1]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{m}=\left(T_{sat}-T\right)\cdot\text{\ensuremath{\mathrm{mDotDeltaT[0]}}}-\left(T-T_{sat}\right)\cdot\mathrm{mDotDeltaT[1]}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{v}_{\alpha}=\left(\frac{1}{\rho_{1}}-\alpha_{1}\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)\right)\dot{m}_{\alpha}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{v}_{CE}=\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)\dot{m}_{CE}=\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)\cdot\left(\mathrm{mDot[0]}-\mathrm{mDot[1]}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{m}\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)=\mathrm{vDot[0]}-\mathrm{vDot[1]}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+
+\size small
+Compressible VoF
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+General Implementation
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Mass balance for each phase 
+\begin_inset Formula $k$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\alpha_{k}\rho_{k}\right)}{\partial t}+\nabla\cdot\left(\alpha_{k}\rho_{k}\boldsymbol{U}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+After a little manipulation:
+\begin_inset Formula 
+\[
+\alpha_{k}\left(\frac{\partial\rho_{k}}{\partial t}+\boldsymbol{U}\cdot\nabla\rho_{k}\right)+\alpha_{k}\rho_{k}\nabla\cdot\boldsymbol{U}+\rho_{k}\left(\frac{\partial\alpha_{k}}{\partial t}+\boldsymbol{U}\cdot\nabla\alpha_{k}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Continuity equation
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The continuity equation is used to construct pressure Poisson equation and
+ will not be solved directly in VoF model.
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Phase fraction transport equation:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{1}}{\partial t}+\nabla\cdot\left(\alpha_{1}\boldsymbol{U}\right)=\alpha_{1}\alpha_{2}\mathrm{dgdt}+\alpha_{1}\nabla\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\mathrm{dgdt}$
+\end_inset
+
+ is the compression term:
+\begin_inset Formula 
+\[
+\mathrm{dgdt}=\left(\frac{1}{\rho_{2}}\frac{D\rho_{2}}{Dt}-\frac{1}{\rho_{1}}\frac{D\rho_{1}}{Dt}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Incorporating the interface compression term in 
+\emph on
+interFoam
+\emph default
+:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{1}}{\partial t}+\nabla\cdot\left(\alpha_{1}\boldsymbol{U}\right)+\nabla\cdot\left(\alpha_{1}\left(1-\alpha_{1}\right)\boldsymbol{U}_{c}\right)=\alpha_{1}\alpha_{2}\mathrm{dgdt}+\alpha_{1}\nabla\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+For boundness, the compression source term 
+\begin_inset Formula $\alpha_{1}\alpha_{2}\mathrm{dgdt}$
+\end_inset
+
+ requires a little special treatment.
+ If 
+\begin_inset Formula $\alpha_{1}\alpha_{2}\mathrm{dgdt}<0$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ should be treated implicitly, and treat 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ explicitly:
+\begin_inset Formula 
+\[
+\alpha_{1}\alpha_{2}\mathrm{dgdt}=\alpha_{1}^{t+\Delta t}\left(1-\alpha_{1}^{t}\right)\mathrm{dgdt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $S_{u}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{p}=\left(1-\alpha_{1}^{t}\right)\mathrm{dgdt}$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+For a variable 
+\begin_inset Formula $\varphi$
+\end_inset
+
+ in transport equation, the source term 
+\begin_inset Formula $S_{\varphi}$
+\end_inset
+
+ can be treated as:
+\begin_inset Formula 
+\[
+S_{\varphi}=S_{u}+S_{p}\varphi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We should make sure that the implicit part of the source term 
+\begin_inset Formula $S_{p}$
+\end_inset
+
+ should be negative to insure diagonal dominance.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+If 
+\begin_inset Formula $\alpha_{1}\alpha_{2}\mathrm{dgdt}>0$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{1}$
+\end_inset
+
+ should be treated explicitly, and treat 
+\begin_inset Formula $\alpha_{2}$
+\end_inset
+
+ implicitly:
+\begin_inset Formula 
+\[
+\alpha_{1}\alpha_{2}\mathrm{dgdt}=\alpha_{1}^{t}\left(1-\alpha_{1}^{t+\Delta t}\right)\mathrm{dgdt}=-\alpha_{l}^{t+\Delta t}\alpha_{1}^{t}\mathrm{dgdt}+\alpha_{1}^{t}\mathrm{dgdt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $S_{u}=\alpha_{1}^{t}\mathrm{dgdt}$
+\end_inset
+
+ and 
+\begin_inset Formula $S_{p}=-\alpha_{1}^{t}\mathrm{dgdt}$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+In OpenFOAM-7, 
+\begin_inset Formula $\mathrm{dgdt}$
+\end_inset
+
+ is determined as:
+\begin_inset Formula 
+\[
+\mathrm{dgdt}=\alpha_{1}\alpha_{2}\left(\frac{1}{\rho_{2}}\frac{D\rho_{2}}{Dt}-\frac{1}{\rho_{1}}\frac{D\rho_{1}}{Dt}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Then, when 
+\begin_inset Formula $\mathrm{dgdt}>0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\mathrm{Su}=\mathrm{dgdt}/\left(1-\alpha_{1}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{Sp}=-\mathrm{dgdt}/\left(1-\alpha_{1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+When 
+\begin_inset Formula $\mathrm{dgdt}<0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\mathrm{Su}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{Sp}=\mathrm{dgdt}/\alpha_{1}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Pressure Poisson equation:
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}+\left(\frac{\alpha_{1}}{\rho_{1}}\frac{D\rho_{1}}{Dt}+\frac{\alpha_{2}}{\rho_{2}}\frac{D\rho_{2}}{Dt}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Define compressibility 
+\begin_inset Formula $\psi=\frac{\partial\rho}{\partial p}$
+\end_inset
+
+, then:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}+\left(\frac{\alpha_{1}\psi_{1}}{\rho_{1}}+\frac{\alpha_{2}\psi_{2}}{\rho_{2}}\right)\left(\frac{\partial p}{\partial t}+\boldsymbol{U}\cdot\nabla p\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+According to the momentum predictor step, 
+\begin_inset Formula $\nabla\cdot\boldsymbol{U}$
+\end_inset
+
+ which is represented as 
+\emph on
+p_rghEqnIncomp
+\emph default
+ in OpenFOAM is transformed to be:
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}=\nabla\cdot\left(\frac{\boldsymbol{H}\left(\boldsymbol{U}\right)}{a_{p}}\right)+\nabla\cdot\left(\frac{\sigma\kappa\nabla\alpha-\boldsymbol{g}\cdot\boldsymbol{x}\nabla\rho}{a_{p}}\right)-\nabla\cdot\left(\frac{\nabla p}{a_{p}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+In OpenFOAM-7 
+\emph on
+compressibleInterFoam
+\emph default
+ solver, 
+\begin_inset Formula $\left(\frac{\alpha_{1}\psi_{1}}{\rho_{1}}\right)\frac{Dp}{Dt}$
+\end_inset
+
+ is represented as 
+\emph on
+p_rghEqnComp1
+\emph default
+, and 
+\begin_inset Formula $\left(\frac{\alpha_{2}\psi_{2}}{\rho_{2}}\right)\frac{Dp}{Dt}$
+\end_inset
+
+ is represented as 
+\emph on
+p_rghEqnComp2
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+In subsonic circumstances, 
+\emph on
+p_rghEqnComp1
+\emph default
+ and 
+\emph on
+p_rghEqnComp2
+\emph default
+ are treated as follows:
+\begin_inset Formula 
+\[
+\left(\frac{\alpha\psi}{\rho}\right)\frac{Dp}{Dt}=\left(\frac{\alpha}{\rho}\right)\frac{D\rho}{Dt}=\left(\frac{\alpha}{\rho^{*}}\right)\left[\frac{D\rho^{*}}{Dt}+\psi^{*}\left(\frac{\partial p}{\partial t}-\frac{\partial p^{*}}{\partial t}\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\frac{\alpha}{\rho^{*}}\right)\frac{D\rho^{*}}{Dt}=\left(\frac{\partial\left(\alpha\rho^{*}\right)}{\partial t}+\nabla\cdot\left(\alpha\boldsymbol{U}\rho^{*}\right)\right)/\rho^{*}-\left(\frac{\partial\alpha}{\partial t}+\nabla\cdot\left(\boldsymbol{U}\alpha\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+When it is transonic, 
+\emph on
+p_rghEqnComp1
+\emph default
+ and 
+\emph on
+p_rghEqnComp2
+\emph default
+ will be:
+\begin_inset Formula 
+\[
+\left(\frac{\alpha\psi}{\rho}\right)\frac{Dp}{Dt}=\left(\frac{\alpha}{\rho}\right)\frac{D\rho}{Dt}=\left(\frac{\alpha}{\rho^{*}}\right)\left(\frac{D\rho^{*}}{Dt}+\frac{D\rho}{Dt}-\frac{D\rho^{*}}{Dt}\right)\approx\left(\frac{\alpha}{\rho^{*}}\right)\left(\frac{D\rho^{*}}{Dt}+\psi^{*}\left(\frac{Dp}{Dt}-\frac{Dp^{*}}{Dt}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where the term 
+\begin_inset Formula $\frac{\alpha}{\rho^{*}}\frac{D\rho^{*}}{Dt}$
+\end_inset
+
+ is the same as in subsonic equations.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The final form in OpenFOAM will be: 
+\size footnotesize
+
+\begin_inset Formula 
+\[
+\left(\frac{\alpha\psi}{\rho}\right)\frac{Dp}{Dt}=\left(\frac{\partial\left(\alpha\rho^{*}\right)}{\partial t}+\nabla\cdot\left(\alpha\boldsymbol{U}\rho^{*}\right)\right)/\rho^{*}-\left(\frac{\partial\alpha}{\partial t}+\nabla\cdot\left(\boldsymbol{U}\alpha\right)\right)+\left(\frac{\alpha}{\rho^{*}}\right)\cdot\mathrm{correction}\left(\psi^{*}\frac{\partial p}{\partial t}+\nabla\cdot\left(\psi^{*}\boldsymbol{U}p\right)-p\nabla\cdot\left(\psi^{*}\boldsymbol{U}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Momentun equation:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho\boldsymbol{U}\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U\boldsymbol{U}}\right)=-\nabla p_{rgh}+\nabla\cdot\boldsymbol{\tau}_{eff}-\boldsymbol{g\cdot\boldsymbol{x}}\nabla\rho+\sigma\kappa\nabla\alpha
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Energy equation, firstly, considering energy conservation for each phase:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho_{i}C_{v,i}T\right)}{\partial t}+\nabla\cdot\left(\rho_{i}\boldsymbol{U}C_{v,i}T\right)+\frac{\partial\left(\rho_{i}K\right)}{\partial t}+\nabla\cdot\left(\rho_{i}\boldsymbol{U}K\right)+\nabla\cdot\left(\boldsymbol{U}p\right)=\nabla\cdot\left(k_{i}\nabla T\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Adding a Phase Change Source Term
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The original form of transport equations for both liquid and vapor phases:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho_{1}\alpha_{1}\right)}{\partial t}+\nabla\cdot\left(\rho_{1}\alpha_{1}\boldsymbol{U}\right)=\dot{m}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho_{2}\alpha_{2}\right)}{\partial t}+\nabla\cdot\left(\rho_{2}\alpha_{2}\boldsymbol{U}\right)=-\dot{m}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Considering phase change phenomena where 
+\begin_inset Formula $\dot{m}$
+\end_inset
+
+ indicates the total inter-phase exchange rate due to either evaporation
+ or condensation:
+\begin_inset Formula 
+\[
+\dot{m}=\dot{m}^{+}+\dot{m}^{-}\;\;\;\left[\mathrm{kg\cdot m^{-3}\cdot s^{-1}}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{m}=\frac{\dot{q}_{pc}}{L_{v}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Transport equations for both liquid and vapor phases:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{1}}{\partial t}+\nabla\cdot\left(\alpha_{1}\boldsymbol{U}\right)=-\frac{\alpha_{1}}{\rho_{1}}\frac{D\rho_{1}}{Dt}+\frac{\dot{m}}{\rho_{1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{2}}{\partial t}+\nabla\cdot\left(\alpha_{2}\boldsymbol{U}\right)=-\frac{\alpha_{2}}{\rho_{2}}\frac{D\rho_{2}}{Dt}-\frac{\dot{m}}{\rho_{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The divergence of mixture velocity refers to variation of the total volume
+ for some fluid particles can be derived:
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}+\left(\frac{\alpha_{1}}{\rho_{1}}\frac{D\rho_{1}}{Dt}+\frac{\alpha_{2}}{\rho_{2}}\frac{D\rho_{2}}{Dt}\right)=\dot{m}\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\nabla\cdot\boldsymbol{U}+\left(\frac{\alpha_{1}\psi_{1}}{\rho_{1}}+\frac{\alpha_{2}\psi_{2}}{\rho_{2}}\right)\left(\frac{\partial p}{\partial t}+\boldsymbol{U}\cdot\nabla p\right)=\dot{m}\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+A further rearrangement provides a final phase transport equation in OpenFOAM:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{1}}{\partial t}+\nabla\cdot\left(\alpha_{1}\boldsymbol{U}\right)+\nabla\cdot\left(\alpha_{1}\left(1-\alpha_{1}\right)\boldsymbol{U}_{c}\right)=\alpha_{1}\alpha_{2}\mathrm{dgdt}+\alpha_{1}\nabla\cdot\boldsymbol{U}+\dot{m}\left(\frac{1}{\rho_{1}}-\alpha_{1}\left(\frac{1}{\rho_{1}}-\frac{1}{\rho_{2}}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+By the way, the continuity equation keeps its original form.
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Energy Equation
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Consider single phase energy equation based on internal ennegy:
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho e\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}e\right)+\frac{\partial\left(\rho K\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}K\right)+\nabla\cdot\left(\boldsymbol{U}p\right)=-\nabla\cdot\boldsymbol{q}+\rho\boldsymbol{g}\cdot\boldsymbol{U}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Energy equation for each phase (every term will multiply its mass fraction
+ coefficient except the material derivative term.):
+\begin_inset Formula 
+\[
+\frac{\partial\left(\alpha_{i}\rho_{i}\left(C_{v,i}T+K\right)\right)}{\partial t}+\nabla\cdot\left(\alpha_{i}\rho_{i}\boldsymbol{U}\left(C_{v,i}T+K\right)\right)+\frac{\alpha_{i}\rho_{i}}{\rho}\nabla\cdot\left(\boldsymbol{U}p\right)-\frac{\alpha_{i}\rho_{i}}{\rho}\nabla\cdot\left(k_{i}\nabla T\right)-\frac{\alpha_{i}\rho_{i}}{\rho}\rho_{i}\boldsymbol{g}\cdot\boldsymbol{U}=\dot{q}_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\dot{q}_{i}$
+\end_inset
+
+ is the phase change heat source term, for the first two terms, we can get:
+\begin_inset Formula 
+\[
+\alpha_{i}\rho_{i}\left(\frac{\partial\left(C_{v,i}T+K\right)}{\partial t}+\boldsymbol{U}\cdot\nabla\left(C_{v,i}T+K\right)\right)+\left(C_{v,i}T+K\right)\left(\frac{\partial\left(\alpha_{i}\rho_{i}\right)}{\partial t}+\nabla\cdot\left(\alpha_{i}\rho_{i}\boldsymbol{U}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Multiply the whole equation by 
+\begin_inset Formula $1/\left(\rho_{i}C_{v,i}\right)$
+\end_inset
+
+, then sum it.
+ Finally multiply the sum with 
+\begin_inset Formula $\rho$
+\end_inset
+
+, we have:
+\size footnotesize
+
+\begin_inset Formula 
+\[
+\left(\frac{\alpha_{1}}{C_{v,1}}+\frac{\alpha_{2}}{C_{v,2}}\right)\left[\rho\left(\frac{\partial K}{\partial t}+\boldsymbol{U}\cdot\nabla K\right)+\nabla\cdot\left(\boldsymbol{U}p\right)\right]+\rho\left(\frac{\partial T}{\partial t}+\boldsymbol{U}\cdot\nabla T\right)+\sum_{i=1,2}\frac{\alpha_{i}T}{C_{v,i}}\cdot\frac{DC_{v,i}}{Dt}-\nabla\cdot\left(\alpha_{eff}\nabla T\right)=\rho\left(\frac{\dot{q}_{c}}{\rho_{1}C_{v,1}}-\frac{\dot{q}_{v}}{\rho_{2}C_{v,2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\alpha_{eff}=\frac{\alpha_{1}k_{1}}{C_{v,1}}+\frac{\alpha_{2}k_{2}}{C_{v,2}}$
+\end_inset
+
+, if we assume a constant 
+\begin_inset Formula $C_{v,i}$
+\end_inset
+
+, we have the final form that used in OpenFOAM:
+\size footnotesize
+
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho T\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}T\right)-\nabla\cdot\left(\alpha_{eff}\nabla T\right)+\left(\frac{\alpha_{1}}{C_{v,1}}+\frac{\alpha_{2}}{C_{v,2}}\right)\left(\frac{\partial\left(\rho K\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}K\right)+\nabla\cdot\left(\boldsymbol{U}p\right)\right)=\rho\left(\frac{\dot{q}_{c}}{\rho_{1}C_{v,1}}-\frac{\dot{q}_{v}}{\rho_{2}C_{v,2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+If we consider potential energy source, it will become:
+\size footnotesize
+
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho T\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}T\right)-\nabla\cdot\left(\alpha_{eff}\nabla T\right)+\left(\frac{\alpha_{1}}{C_{v,1}}+\frac{\alpha_{2}}{C_{v,2}}\right)\left(\frac{\partial\left(\rho K\right)}{\partial t}+\nabla\cdot\left(\rho\boldsymbol{U}K\right)+\nabla\cdot\left(\boldsymbol{U}p\right)-\rho\boldsymbol{g}\cdot\boldsymbol{U}\right)=\rho\left(\frac{\dot{q}_{c}}{\rho_{1}C_{v,1}}-\frac{\dot{q}_{v}}{\rho_{2}C_{v,2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Temperature Phase Change Model
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Empirical Rate Parameter (Lee Model)
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\dot{q}_{pc}=\begin{cases}
+\begin{array}{c}
+r_{v}L_{v}\left(1-\alpha_{1}\right)\rho_{2}\frac{T_{sat}-T}{T_{sat}}\;\;\;\left(cond,>0\right)\\
+r_{l}L_{v}\alpha_{1}\rho_{1}\frac{T_{sat}-T}{T_{sat}}\;\;\;\left(evap,<0\right)
+\end{array} & \begin{array}{c}
+T_{sat}\geq T\\
+T_{sat}\leq T
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Tanasawa Model (in units mass per time per area)
+\begin_inset Formula 
+\[
+\dot{m}_{s}=\frac{2\gamma}{2-\gamma}\sqrt{\frac{M}{2\pi R}}\frac{\rho_{2}L_{v}\left(T_{sat}-T\right)}{T_{sat}^{3/2}}\;\;\;\left(cond,>0\;\;evap,<0\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Sharp Interface Model
+\begin_inset Formula 
+\[
+\dot{m}=\frac{k_{eff}\left(\nabla\alpha_{1}\cdot\nabla T\right)}{L_{v}}\;\;\;\left(cond,<0\;\;evap,>0\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Interface Equilibrium Model (Rattner and Garimella)
+\begin_inset Formula 
+\[
+S_{1}=\frac{\rho c_{p}\left(T_{sat}-T\right)}{\Delta t}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S_{2}=\begin{cases}
+\begin{array}{c}
+\frac{\left(1-\alpha_{1}\right)\rho_{2}L_{v}}{\Delta t}\\
+-\frac{\alpha_{1}\rho_{1}L_{v}}{\Delta t}
+\end{array} & \begin{array}{c}
+\textrm{condensation}\\
+\textrm{evaporation}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S_{3}=\pm\frac{L_{v}}{\Delta t}\left(\frac{1}{\rho_{2}}-\frac{1}{\rho_{1}}\right)^{-1}\textmd{positive for condensation, negetive for evaporation}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{m}=\begin{cases}
+\begin{array}{c}
+\min\left\{ S_{1},S_{2},S_{3}\right\} /L_{v}\\
+\max\left\{ S_{1},S_{2},S_{3}\right\} /L_{v}
+\end{array} & \begin{array}{c}
+T<T_{sat}\\
+T>T_{sat}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\size small
+CFD with OpenFOAM
+\end_layout
+
+\begin_layout Subsection
+
+\size small
+Compressible Solver rhoPimpleFoam
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Assume we kown everything at time 
+\begin_inset Formula $t=t_{n}$
+\end_inset
+
+, and start time marching to solve everything at time 
+\begin_inset Formula $t=t_{n+1}$
+\end_inset
+
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+For simplicity, assume there is only one pimple loop.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+1.
+ Predict density field explicitly by solving continuity equation (firstPimpleIte
+r):
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}+\nabla\cdot\left(\rho^{n}\boldsymbol{U}^{n}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+then we have 
+\begin_inset Formula $\rho^{*}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+2.
+ Momentum predictor by constructing momentum equation as 
+\begin_inset Formula $a_{P}\boldsymbol{U}_{P}+\sum a_{N}\boldsymbol{U}_{N}=E_{P}$
+\end_inset
+
+ and solving momentum prediction equation:
+\begin_inset Formula 
+\[
+a_{P}\boldsymbol{U}_{P}^{*}+\sum a_{N}\boldsymbol{U}_{N}^{*}=E_{P}-\nabla p^{*}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{\mathrm{HbyA}}^{*}=\frac{1}{a_{P}}\left(E_{P}-\sum a_{N}\boldsymbol{U}_{N}^{*}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{U}^{*}=\boldsymbol{\mathrm{HbyA}}^{*}-\frac{1}{a_{P}}\nabla p^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+for firstPimpleIter, 
+\begin_inset Formula $p^{*}=p^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+3.
+ Solve energy equation (neglect other source terms):
+\begin_inset Formula 
+\[
+\frac{\partial\left(\rho^{*}h\right)}{\partial t}+\nabla\cdot\left(\left(\rho\boldsymbol{U}\right)^{*}h\right)+\frac{\partial\left(\rho^{*}K\right)}{\partial t}+\nabla\cdot\left(\left(\rho\boldsymbol{U}\right)^{*}K\right)+\frac{\partial p^{*}}{\partial t}-\nabla\cdot\left(\alpha_{eff}\nabla h\right)=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+K=\frac{1}{2}\left|\boldsymbol{U}^{*}\right|^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+for firstPimpleIter, 
+\begin_inset Formula $\left(\rho\boldsymbol{U}\right)^{*}=\left(\rho\boldsymbol{U}\right)^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+And then correct temperature, compressibility, density, dynamic viscosity
+ and thermal diffusivity via the updated enthalpy 
+\begin_inset Formula $h$
+\end_inset
+
+ and the geussed pressure 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+.
+ At this time, we have 
+\begin_inset Formula $T^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $\psi^{*}$
+\end_inset
+
+, 
+\begin_inset Formula $\rho^{**}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha^{*}$
+\end_inset
+
+, and let 
+\begin_inset Formula $\rho^{*}$
+\end_inset
+
+ represents 
+\begin_inset Formula $\rho^{**}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+4.
+ Pressure correction equation according to the continuity equation:
+\begin_inset Formula 
+\[
+\frac{\partial\rho^{n+1}}{\partial t}+\nabla\cdot\left(\rho^{n+1}\boldsymbol{U}^{n+1}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\rho^{n+1}=\rho^{*}+\rho'$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{U}^{n+1}=\boldsymbol{U}^{*}+\boldsymbol{U}'$
+\end_inset
+
+, then we have:
+\begin_inset Formula 
+\[
+\frac{\partial\rho^{*}}{\partial t}+\frac{\partial\rho'}{\partial t}+\nabla\cdot\left(\rho^{*}\left(\boldsymbol{U}^{*}+\boldsymbol{U}'\right)\right)+\nabla\cdot\left(\rho'\boldsymbol{U}^{*}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The corrected density term can be approximate as
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\size small
+All 
+\begin_inset Formula $n+1$
+\end_inset
+
+ means estimated 
+\begin_inset Formula $n+1$
+\end_inset
+
+!
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{\partial\rho'}{\partial t}=\psi^{*}\frac{\partial p'}{\partial t}=\psi^{*}\left(\frac{\partial p^{n+1}}{\partial t}-\frac{\partial p^{*}}{\partial t}\right)=\mathrm{psi*correction(fvm::ddt(p))}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Considering this approximation 
+\begin_inset Formula $\boldsymbol{U}^{n+1}\approx\boldsymbol{\mathrm{HbyA}}^{*}-\nabla p^{n+1}$
+\end_inset
+
+, then:
+\begin_inset Formula 
+\[
+\nabla\cdot\left(\rho^{*}\left(\boldsymbol{U}^{*}+\boldsymbol{U}'\right)\right)=\nabla\cdot\left(\rho^{*}\boldsymbol{\mathrm{HbyA}}^{*}\right)-\nabla\cdot\left(\frac{\rho^{*}}{a_{P}}\nabla p^{n+1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\nabla\cdot\left(\rho^{*}\boldsymbol{\mathrm{HbyA}}^{*}\right)=\mathrm{fvc::div(phiHbyA)}$
+\end_inset
+
+ and 
+\begin_inset Formula $\nabla\cdot\left(\frac{\rho^{*}}{a_{P}}\nabla p^{n+1}\right)=\mathrm{fvm::laplician(rhorAUf,p)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The last term 
+\begin_inset Formula $\nabla\cdot\left(\rho'\boldsymbol{U}^{*}\right)$
+\end_inset
+
+ is only accountable in transonic circumstances.
+ Considering this relation 
+\begin_inset Formula $\rho=\psi p$
+\end_inset
+
+, we have:
+\begin_inset Formula 
+\[
+\nabla\cdot\left(\rho'\boldsymbol{U}^{*}\right)=\nabla\cdot\left(\frac{\rho^{n+1}-\rho^{*}}{\rho^{*}}\left(\rho^{*}\boldsymbol{U}^{*}\right)\right)\approx\nabla\cdot\left(\frac{\psi^{*}\left(p^{n+1}-p^{*}\right)}{\rho^{*}}\left(\rho^{*}\boldsymbol{U}^{*}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+then 
+\begin_inset Formula $\nabla\cdot\left(\rho'\boldsymbol{U}^{*}\right)$
+\end_inset
+
+ can be devided in two parts, the first part 
+\begin_inset Formula $\nabla\cdot\left(\frac{\psi^{*}}{\rho^{*}}\left(\rho^{*}\boldsymbol{U}^{*}\right)p^{n+1}\right)=\mathrm{fvm::div(phid,p)}$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathrm{phid}=\left[\frac{\psi^{*}}{\rho^{*}}\cdot\left(\rho^{*}\boldsymbol{U}^{*}\right)\right]_{f}=\left(\frac{\psi^{*}}{\rho^{*}}\right)_{f}\mathrm{phiHbyA}$
+\end_inset
+
+, and the second part 
+\begin_inset Formula $\nabla\cdot\left(-\frac{\psi^{*}p^{*}}{\rho^{*}}\left(\rho^{*}\boldsymbol{U}^{*}\right)\right)$
+\end_inset
+
+ where this term is incorporated into 
+\begin_inset Formula $\mathrm{phiHbyA}$
+\end_inset
+
+ as 
+\begin_inset Formula $\mathrm{phiHbyA}=\mathrm{phiHbyA}-\left(\frac{\psi^{*}p^{*}}{\rho^{*}}\right)_{f}\mathrm{phiHbyA}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+// subsonic
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+fvScalarMatrix pDDtEqn
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+(
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+    fvc::ddt(rho) + psi*correction(fvm::ddt(p)) + fvc::div(phiHbyA)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+);
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+// transoic
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+fvScalarMatrix pDDtEqn
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+(
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+    fvc::ddt(rho) + psi*correction(fvm::ddt(p))
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+    + fvc::div(phiHbyA) + fvm::div(phid, p)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+); // phiHbyA -= fvc::interpolate(psi*p)*phiHbyA/fvc::interpolate(rho)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+// pressure correction equation
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+fvScalarMatrix pEqn(pDDtEqn - fvm::laplacian(rhorAUf, p));
+\end_layout
+
+\begin_layout Standard
+
+\size small
+5.
+ Update the mass flux after solving the pressure correction equation and
+ correct the density by:
+\begin_inset Formula 
+\[
+\rho^{n+1}=\rho^{*}+\psi^{*}\left(p^{n+1}-p^{*}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Meanwhile, explicitly solve continuity equation again:
+\begin_inset Formula 
+\[
+\frac{\partial\rho}{\partial t}+\nabla\cdot\left(\rho^{n+1}\boldsymbol{U}^{n+1}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+then the density is updated again: 
+\begin_inset Formula $\rho^{n+1}\rightarrow\rho^{n+1,new}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Finally, update the velocity field and update the 
+\begin_inset Formula $\mathrm{dpdt}$
+\end_inset
+
+ term in energy equation.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+If this is the final pimple loop under current time step, keep the density
+ field updated!
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Discretization & Schemes
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Refer to 
+\emph on
+OpenFOAM User Guide
+\emph default
+ for more details on implementation different schemes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+Gradient Limiter
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Based on the gradient scheme, calculate min and max neighbourhood value
+ and apply gradient limiter to preserve bounds in cell centres:
+\begin_inset Formula 
+\[
+\min_{N}\left(\phi_{N}\right)\leq\phi_{P}+\boldsymbol{d}_{N}\cdot\left(\nabla\phi\right)_{P}\leq\max_{N}\left(\phi_{N}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is neighbour cells.
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+Limited Non-orthogonal Correction
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Explicit part clipped to be smaller than its implicit counterpart, base
+ on the current solution:
+\begin_inset Formula 
+\[
+\lambda\frac{\left|\boldsymbol{S}_{f}\right|}{\left|\boldsymbol{d}_{f}\right|}\left(\phi_{N}-\phi_{P}\right)>\boldsymbol{k}_{f}\left(\nabla\phi\right)_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the limiter value.
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+General Comments
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+MULES
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size footnotesize
+MULES Implicit Correction
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Considering a scalar transport equation:
+\begin_inset Formula 
+\[
+\frac{\partial\psi}{\partial t}+\nabla\cdot\left(\boldsymbol{U}\psi\right)=S_{u}+S_{p}\psi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+After discretization with a higher-order scheme and a lower-order upwind
+ scheme, we have:
+\begin_inset Formula 
+\[
+\begin{cases}
+\begin{array}{c}
+\frac{\left(\psi^{H}\right)^{n+1}-\left(\psi^{H}\right)^{n}}{\Delta t}+\left(\nabla\cdot\left(\boldsymbol{U}\psi\right)\right)^{H}=S_{u}+S_{P}\left(\psi^{H}\right)^{n+1}\\
+\frac{\left(\psi^{L}\right)^{n+1}-\left(\psi^{L}\right)^{n}}{\Delta t}+\left(\nabla\cdot\left(\boldsymbol{U}\psi\right)\right)^{L}=S_{u}+S_{P}\left(\psi^{L}\right)^{n+1}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+After a little manipulation:
+\begin_inset Formula 
+\[
+\frac{\left(\psi^{H}\right)^{n+1}-\left(\psi^{L}\right)^{n+1}}{\Delta t}+\nabla\cdot A=S_{p}\left[\left(\psi^{H}\right)^{n+1}-\left(\psi^{L}\right)^{n+1}\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\psi^{H}\right)^{n+1}=\frac{\frac{\left(\psi^{L}\right)^{n+1}}{\Delta t}+S_{u}'-\nabla\cdot A}{\frac{1}{\Delta t}-S_{p}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $A$
+\end_inset
+
+ is the anti-diffusive flux: 
+\begin_inset Formula $A=\left(\boldsymbol{U}\cdot\boldsymbol{S}\right)_{f}\psi_{f}^{H}-\left(\boldsymbol{U}\cdot\boldsymbol{S}\right)_{f}\text{\ensuremath{\psi_{f}^{L}}}$
+\end_inset
+
+, and 
+\begin_inset Formula $S_{u}'=-S_{p}\left(\psi^{L}\right)^{n+1}$
+\end_inset
+
+.
+ By the way, 
+\begin_inset Formula $\left(\psi^{L}\right)^{n+1}$
+\end_inset
+
+ is calculated by the pridictor step or the privious MULES corrector iteration.
+ As we can see, the 
+\begin_inset Formula $S_{u}$
+\end_inset
+
+ term in transport equation is not used in MULES correction and will not
+ show up in relevant code.
+ 
+\begin_inset Formula $Q^{+}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q^{-}$
+\end_inset
+
+ in MULES 
+\emph on
+limiterCorr
+\emph default
+ (according to my reading):
+\begin_inset Formula 
+\[
+\begin{cases}
+\begin{array}{c}
+Q_{i}^{+}=V_{i}\left[\left(\frac{\rho}{\Delta t}-S_{p}\right)\psi_{i}^{max}-S'_{u}-\frac{\rho}{\Delta t}\psi_{i}^{n}\right]\\
+Q_{i}^{-}=V_{i}\left[S'_{u}-\left(\frac{\rho}{\Delta t}-S_{p}\right)\psi_{i}^{min}+\frac{\rho}{\Delta t}\psi_{i}^{n}\right]
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\psi_{i}^{n}$
+\end_inset
+
+ here means previous iteration in 
+\emph on
+nAlphaCorr
+\emph default
+.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size footnotesize
+MULES Explicit Solving
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Considering 
+\emph on
+compressibleInterFoam
+\emph default
+ phase transport equation:
+\begin_inset Formula 
+\[
+\frac{\partial\alpha_{1}}{\partial t}+\nabla\cdot\left(\alpha_{1}\boldsymbol{U}\right)+\nabla\cdot\left(\alpha_{1}\left(1-\alpha_{1}\right)\boldsymbol{U}_{c}\right)=S_{u}+S_{p}\alpha_{1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{\text{\ensuremath{\alpha_{1}^{n+1}-\alpha_{1}^{n}}}}{\Delta t}+\sum\boldsymbol{U}_{f}^{n}\alpha_{f}^{n}+\sum\boldsymbol{U}_{c,f}^{n}\alpha_{f}^{n}\left(1-\alpha_{f}^{n}\right)=S_{u}+S_{p}\alpha_{1}^{n+1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(\frac{1}{\Delta t}-S_{p}\right)\alpha_{1}^{n+1}=\frac{1}{\Delta t}\alpha_{1}^{n}+S_{u}-\sum\boldsymbol{U}_{f}^{n}\alpha_{f}^{n}-\sum\boldsymbol{U}_{c,f}^{n}\alpha_{f}^{n}\left(1-\alpha_{f}^{n}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Introducing limiter 
+\begin_inset Formula $F^{corr}=F^{L}+\lambda\left(F^{H}-F^{L}\right)$
+\end_inset
+
+, we can get:
+\begin_inset Formula 
+\[
+\left(\frac{1}{\Delta t}-S_{p}\right)\alpha_{1}^{n+1}=\frac{1}{\Delta t}\alpha_{1}^{n}+S_{u}-\sum F^{corr}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F^{L}=\phi_{f}\alpha_{f,upwind}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula $Q^{+}$
+\end_inset
+
+ and 
+\begin_inset Formula $Q^{-}$
+\end_inset
+
+ in MULES 
+\emph on
+limiter
+\emph default
+ (according to my reading):
+\begin_inset Formula 
+\[
+\begin{cases}
+\begin{array}{c}
+Q_{i}^{+}=V_{i}\text{\left[\left(\frac{\rho}{\Delta t}-S_{p}\right)\psi_{i}^{max}-S_{u}-\frac{\rho}{\Delta t}\psi_{i}^{n}\right]}+\sum F^{L}\\
+Q_{i}^{-}=V_{i}\text{\ensuremath{\left[S_{u}-\left(\frac{\rho}{\Delta t}-S_{p}\right)\psi_{i}^{min}+\frac{\rho}{\Delta t}\psi_{i}^{n}\right]}}-\sum F^{L}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\psi_{i}^{n}$
+\end_inset
+
+ here means previous time not previous iteration.
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+pEqn.flux()
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Pressure Poisson equation:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\[
+\sum_{f}\left\{ \left(\frac{1}{A_{p}}\right)_{f}\left|\boldsymbol{\Delta}\right|\frac{p_{N}-p_{P}}{\left|\boldsymbol{d}\right|}+\left(\frac{1}{A_{p}}\right)_{f}\boldsymbol{k}\left(\nabla p\right)_{f}\right\} =\sum_{f}\left(\frac{\boldsymbol{H}}{A_{p}}\right)_{f}\cdot\boldsymbol{S}_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Construct the conservative face flux 
+\begin_inset Formula $\phi$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+phi=phiHbyA-\left(\left(\frac{1}{A_{p}}\right)_{f}\left|\boldsymbol{\Delta}\right|\frac{p_{N}-p_{P}}{\left|\boldsymbol{d}\right|}+\left(\frac{1}{A_{p}}\right)_{f}\boldsymbol{k}\left(\nabla p\right)_{f}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+In the above equation, the pEqn.flux() calculates:
+\begin_inset Formula 
+\[
+\left(\frac{1}{A_{p}}\right)_{f}\left|\boldsymbol{\Delta}\right|\frac{p_{N}-p_{P}}{\left|\boldsymbol{d}\right|}+\left(\frac{1}{A_{p}}\right)_{f}\boldsymbol{k}\left(\nabla p\right)_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Code:
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+fvMatrix pEqn
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+{
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+    fvm::laplacian(rUA,p) == fvc::div(phi)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+};
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+pEqn.setReference(pRefCell, pRefValue);
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+pEqn.solve();
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+if (nonOrth == nNonOrthCorr)
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+{
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+    phi −= pEqn.flux(); // phi = phiHbyA - pEqn.flux();
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+}
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+// pEqn.flux() == fvc::interpolate(rUA)*fvc::snGrad(p)*mag(mesh.Sf())
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+The Courant Number in OpenFOAM
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+// CourrantNo.H
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+scalarField sumPhi(fvc::surfaceSum(mag(phi))().primitiveField());
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+CoNum = 0.5*gMax(sumPhi/mesh.V().field())*runTime.deltaTValue();
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+meanCoNum = 0.5*(gSum(sumPhi)/gSum(mesh.V().field()))*runTime.deltaTValue();
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{sumPhi}=\sum_{f\sim nb\left(C\right)}\left|\phi_{f}\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{CoNum}=\frac{1}{2}\max\left(\frac{\mathrm{sumPhi}}{V_{cell}}\right)\Delta t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{meanCoNum}=\frac{1}{2}\frac{\sum\mathrm{sumPhi}}{\sum V_{cell}}\Delta t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Under-relaxation
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Consider the original system of equations:
+\begin_inset Formula 
+\[
+a_{P}\phi_{P}^{n}+\sum a_{N}\phi_{N}^{n}=S_{P}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+under-relaxed by under-relaxation factor 
+\begin_inset Formula $\alpha$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{a_{P}}{\alpha}+\sum a_{N}\phi_{N}=S_{P}+\frac{1-\alpha}{\alpha}a_{P}\phi_{P}^{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\size small
+Residual in OpenFOAM
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The current absolute residual 
+\begin_inset Formula $\delta^{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta^{n}=\left|\boldsymbol{b}-\boldsymbol{A}\boldsymbol{x}^{n}\right|_{L_{1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The scaled residual by a normalization factor is
+\begin_inset Formula 
+\[
+\delta_{scaled}^{n}=\frac{\left|\boldsymbol{b}-\boldsymbol{Ax}^{n}\right|_{L_{1}}}{\left|\boldsymbol{Ax}^{n}-\boldsymbol{A}\bar{\boldsymbol{x}}^{n}\right|_{L_{1}}+\left|\boldsymbol{b}-\boldsymbol{A}\bar{\boldsymbol{x}}^{n}\right|_{L_{1}}+\epsilon}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\bar{\boldsymbol{x}}$
+\end_inset
+
+ is the average of the solution vector, 
+\begin_inset Formula $L_{1}$
+\end_inset
+
+ represents the 
+\begin_inset Formula $L_{1}-\mathrm{norm}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The relative residual is
+\begin_inset Formula 
+\[
+\delta_{rel}^{n}=\frac{\left\Vert \delta_{scaled}^{n}\right\Vert }{\left\Vert \delta_{scaled}^{0}\right\Vert }
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+So the convergence criteria is
+\begin_inset Formula 
+\[
+\delta_{scaled}^{n}\leq\mathrm{tolerance}\;\;\mathrm{or}\;\;\delta_{rel}^{n}\leq\mathrm{relTol}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+OpenFOAM API
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+fvMatrix
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+// assume A is a fvMatrix.
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+Lower = A.lower(); // lower coefficients
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+Upper = A.upper(); // upper coefficients
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+l = A.lduAddr().lowerAddr() // lower address
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+u = A.lduAddr().upperAddr() // upper address
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+// for face ID fi:
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+// Lower[fi] repressents influence of owner cell l[fi] on neighbour cell
+ u[fi].
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+// Lower[fi] location in Matrix: (u[fi],l[fi])
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+// Upper[fi] repressents influence of neighbour cell u[fi] on owner cell
+ l[fi].
+\end_layout
+
+\begin_layout LyX-Code
+
+\size footnotesize
+// Upper[fi] location in Matrix: (l[fi],u[fi])
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+interfaceProperties
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Contains the interface properties.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Properties to aid interFoam:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+Correct the alpha boundary condition for dynamic contact angle.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+Calculate interface curvature.
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+surfaceScalarField nHatf_; // returned by nHatf()
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+\begin_inset Formula 
+\[
+n_{f}=\frac{\left(\nabla\alpha\right)_{f}}{\left|\left(\nabla\alpha\right)_{f}+\delta_{n}\right|}\cdot\boldsymbol{S}_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+volScalarField K_; // incorporate correctContactAngle when calculateK
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+mean curvature of free surface definition:
+\begin_inset Formula 
+\[
+k=-\nabla\cdot\left(\frac{\nabla\alpha}{\left|\nabla\alpha\right|}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+\begin_inset Formula 
+\[
+\kappa=-\nabla\cdot\boldsymbol{n}=-\nabla\cdot\left(\frac{\nabla\alpha}{\left|\nabla\alpha+\delta_{n}\right|}\right)=\mathtt{\mathscr{\textrm{\mathrm{fvc::div}\left(\mathrm{nHatf\_}\right)}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+sigmaK() -> tmp<volScalarField>
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+\begin_inset Formula 
+\[
+\mathrm{sigmaK()}=\sigma\cdot\kappa
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+Comments on interThermalPhaseChangeFoam
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+twoPhaseThermalMixture.H:
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size small
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="4">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+twoPhaseTermalMixture member variables collection
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+parameter
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+volField
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+surfaceField
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+ImprovedTransportBlending
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+thermal diffusivity 
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\frac{\lambda}{c_{p}\left(\rho_{1}\alpha_{1}+\rho_{2}\left(1-\alpha_{1}\right)\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+interpolate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+dynamic viscosity 
+\begin_inset Formula $\mu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\alpha_{1}\rho_{1}\nu_{1}+\left(1-\alpha_{1}\right)\rho_{2}\nu_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+interpolate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+kinematic viscosity 
+\begin_inset Formula $\nu$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+correct(): 
+\begin_inset Formula $\frac{\mu}{\alpha_{1}\rho_{1}+\left(1-\alpha_{1}\right)\rho_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\frac{\alpha_{1}\rho_{1}\nu_{1}+\left(1-\alpha_{1}\right)\rho_{2}\nu_{2}}{\alpha_{1}\rho_{1}+\left(1-\alpha_{1}\right)\rho_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+density 
+\begin_inset Formula $\rho$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\alpha_{1}\rho_{1}+\left(1-\alpha_{1}\right)\rho_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+specific heat 
+\begin_inset Formula $c_{p}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\frac{\alpha_{1}\rho_{1}c_{p1}+\left(1-\alpha_{1}\right)\rho_{2}c_{p2}}{\alpha_{1}\rho_{1}+\left(1-\alpha_{1}\right)\rho_{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+interpolate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+no
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+thermal conductivity 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+\begin_inset Formula $\alpha_{1}\lambda_{1}+\left(1-\alpha_{1}\right)\lambda_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+interpolate
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size small
+yes
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+alphaCourantNo.H:
+\begin_inset Formula 
+\[
+\mathrm{alphaCoNum}=\frac{1}{2}\max\left(\alpha\frac{\sum_{f}\left|\rho\boldsymbol{U}\right|_{f}}{V}\right)\Delta t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+A little common viriables:
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+surafeceScalarField phic
+\begin_inset Formula 
+\[
+\mathrm{phic}=\min\left[C_{\alpha}\frac{\left|\phi\right|}{\left|\boldsymbol{S}_{f}\right|},\max\left(\frac{\left|\phi\right|}{\left|\boldsymbol{S}_{f}\right|}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+surfaceScalarField phir
+\begin_inset Formula 
+\[
+\mathrm{phir}=U_{r,f}=n_{f}\min\left[C_{\alpha}\frac{\left|\phi\right|}{\left|\boldsymbol{S}_{f}\right|},\max\left(\frac{\left|\phi\right|}{\left|\boldsymbol{S}_{f}\right|}\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+volScalarField divU // this term may account for the continuity error
+\begin_inset Formula 
+\[
+\mathrm{divU}=\nabla\cdot\boldsymbol{U}-\dot{v}_{pc}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+surfaceScalarField kEff // effective themal conductivity
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+\begin_inset Formula 
+\[
+k_{eff}=\lambda+\rho c_{p}\nu_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+volScalarField muEffKistler // support the Kistler contact angle model
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+\begin_inset Formula 
+\[
+\mu_{eff,\mathrm{Kistler}}=\mu+\rho\nu_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+surfaceScalarField phi_c // capillary flux returned by surfaceTensionForceModel
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+volScalarField H
+\begin_inset Formula 
+\[
+H=\frac{\left[\alpha_{1}\rho_{1}c_{p1}+\left(1-\alpha_{1}\right)\rho_{2}c_{p2}\right]\cdot\left(T-T_{0}\right)}{\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Run-time Selection Mechanism
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+declareRunTimeSelectionTable
+\end_layout
+
+\begin_layout Standard
+
+\size small
+This macro adds to Base.H:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+typedefs for the constructor pointer and hash table data types
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+the hash table pointer
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+prototypes for the hash table creator and destroyer functions
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+the full definition of the AddToTable template subclass
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+declareRunTimeSelectionTable(autoPtr,baseType,argNames,argList,parList);
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+autoPtr - either tmp (for large objects) or autoPtr.
+ This is the type of wrapper class to be used to return the constructed
+ Derived.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+argNames - this is a small name you gave to the parameter list.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+argList - this is the full parameter list with modifiers, types and names.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+parList - this is the parameter list with names only.
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+defineRunTimeSelectionTable
+\end_layout
+
+\begin_layout Standard
+
+\size small
+This macro adds to Base.C:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+initialization for the hash table pointer (necessary as it is static).
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+the body for the the hash table creator and destroyer functions.
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+defineRunTimeSelectionTable(baseType,argNames);
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+addToRunTimeSelectionTable
+\end_layout
+
+\begin_layout Standard
+
+\size small
+For every constructor type, an addToRunTimeSelectionTable call should be
+ made in Derived.C:
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+Adds an AddToTable member variable to Base, which in turn adds Derived's
+ constructor to the hash table.
+\end_layout
+
+\begin_layout LyX-Code
+\noindent
+
+\size small
+addToRunTimeSelectionTable(baseType,thisType,argNames);
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+baseType - this is Base.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+thisType - this is Derived1, Derived2 or maybe Derived3.
+\end_layout
+
+\begin_layout Subsubsection
+\noindent
+
+\size small
+Selectors
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Selectors act as the virtual constructor function itself.
+ They are declared in Base, and in OpenFOAM they are named New.
+\end_layout
+
+\begin_layout Standard
+
+\size small
+There are no macros available for this.
+ You need to fully implement the selector functions yourself.
+ For every constructor type, you need to declare a New in Base.H and implement
+ it in Base.C.
+\end_layout
+
+\begin_layout Section
+\noindent
+
+\size small
+Questions & Answers
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Q&A on icoFoam
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+When construct predict velocity, why through UEqn.A()
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+UEqn.A() which returns diagonal elements divided by cell volume, a volScalarField.
+\end_layout
+
+\end_inset
+
+ not UEqn.D()
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\size small
+UEqn.D() which returns diagonal elements, a scalarField.
+\end_layout
+
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Standard
+
+\size small
+When using the fvc operator such as fvc::grad(p) in solve(UEqn == -fvc::grad(p))
+, the fvc::grad(p) is decided by
+\begin_inset Formula 
+\[
+\mathrm{fvc::grad(p)}=\frac{1}{V_{C}}\int_{V_{C}}\left(\nabla p\right)dV=\frac{1}{V_{C}}\sum_{f\sim nb(C)}p\cdot d\boldsymbol{S}_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+while for the fvm operator such as fvm::div(phi,U), it will be
+\begin_inset Formula 
+\[
+\mathrm{fvm::div(phi,U)}=\int_{V_{C}}\nabla\cdot\left(\boldsymbol{UU}\right)dV=\sum_{f\sim\text{nb(C)}}\left(\boldsymbol{U}\cdot\boldsymbol{S}_{f}\right)\boldsymbol{U}_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+notice that there is no volume average part 
+\begin_inset Formula $\frac{1}{V_{c}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+\noindent
+
+\size small
+Q&A on 
+\begin_inset Quotes eld
+\end_inset
+
+Description and utilization of interFoam multiphase solver
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+correctPhi.H in detial, you should?
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Basically, correct the surface flux (phi) based on the initial pressure
+ boundary conditions.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+How is the fvc::flux() method, and how is the fvc::reconstruct() method?
+ What did they do? What is the difference between fvc::flux() method and
+ pEqn.flux() method?
+\end_layout
+
+\begin_layout Standard
+
+\size small
+fvc::reconstruct() method reconstructs volField based on surfaceField (i.e.
+ volumetric flux), calculation (i.e.
+ velocity field):
+\begin_inset Formula 
+\[
+\boldsymbol{U}_{p}=\frac{\sum_{f\sim nb\left(C\right)}\frac{\boldsymbol{S}_{f}}{\left|\boldsymbol{S}_{f}\right|}\phi_{f}}{\sum_{f\sim nb\left(C\right)}\frac{\boldsymbol{S}_{f}}{\left|\boldsymbol{S}_{f}\right|}\otimes\boldsymbol{S}_{f}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Reconstruction is only available in cell centres: there is no need to invert
+ the tensor on the boundary.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Functionality: to avoid checkerboard pressure oscillations that may occur
+ on co-located grids.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+How to realize MULES technique?
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+How is fvc::snGrad() (surface-normal gradient) schemes?
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The full gradient of a property 
+\begin_inset Formula $Q$
+\end_inset
+
+ at a face can can be interpolated from the cell-based gradient.
+ The surface-normal contribution is then represented by:
+\begin_inset Formula 
+\[
+\nabla_{f}^{\perp}Q=\boldsymbol{n}_{f}\cdot\left(\nabla Q\right)_{f}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+The fvc::snGrad() of a volScalarField returns a surfaceScalarField while
+ the fvc::grad() of a volScalarField returns a volVectorField.
+\end_layout
+
+\begin_layout Itemize
+\noindent
+
+\size small
+What did the turbulence->divDevRhoReff(rho, U) do? What did the turbulence->corr
+ect() do?
+\end_layout
+
+\end_body
+\end_document

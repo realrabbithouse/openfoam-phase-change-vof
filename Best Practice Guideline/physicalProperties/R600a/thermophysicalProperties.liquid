@@ -1,0 +1,56 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// R600a at TSat = 326K, 0.73415Mpa
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+// sigma = 0.07
+// Lv = 294.93e3
+
+mixture
+{
+    specie
+    {
+        molWeight   58.12;
+    }
+    equationOfState
+    {
+        rho         513.29;
+    }
+    thermodynamics
+    {
+        Cp          2639.5; // Cp = 2639.5, Cv = 2046.2
+        Hf          0; 
+    }
+    transport
+    {
+        mu          1.1353e-4; // k = 0.79851, alphah = 5.894e-4cm^2/s
+        Pr          3.7528;
+    }
+}
+
+
+// ************************************************************************* //

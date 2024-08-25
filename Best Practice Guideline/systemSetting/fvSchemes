@@ -1,0 +1,121 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         Euler;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+
+    // Gradient limiters will avoid over and under shoots on the gradient computations. They
+    // increase the stability of the method but add diffusion due to clipping
+    // cellMDLimited -> cellLimited -> faceMDLimited -> faceLimited (more diffusive)
+
+    // Gradient limiter with blending factor psi
+    // 0: more accurate but less stable; 1: more stable but less accurate
+    default         cellMDLimited Gauss linear psi;
+
+    // A good idea to setup for pressure gradient
+    grad(p)         cellLimited Gauss linear 0.333;
+
+    // For better evaluating temperature gradient
+    grad(T)         cellMDLimited leastSquares 0.333;
+}
+
+divSchemes
+{
+    default             none;
+
+    // compressibleInterPhaseChangeFlow running in laminar
+    // stable but diffusive
+    div(rhoPhi,U)       Gauss upwind;
+    div(rhoPhi,K)       Gauss upwind;
+    div(phi,p)          Gauss upwind;
+    div(rhoCvPhi,T)     Gauss upwind;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    // accurate & stable
+    div(rhoPhi,U)       Gauss linearUpwind grad(U);
+    div(rhoPhi,K)       Gauss linearUpwind grad(K);
+    div(phi,p)          Gauss linearUpwind grad(p);
+    div(rhoCvPhi,T)     Gauss vanLeer;
+    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+
+    // compressibleInterPhaseChangeFoam running in laminar
+    div(phi,alpha)      Gauss vanLeer;
+    div(phirb,alpha)    Gauss vanLeer;
+
+
+
+    // A robust numerical scheme but too diffusive
+    div(phi,U)          Gauss upwind;
+    div(phi,omega)      Gauss upwind;
+    div(phi,k)          Gauss upwind;
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;
+
+    // An accurate and stable numerical scheme
+    div(phi,U)          Gauss linearUpwind grad(U);
+    div(phi,omega)      Gauss linearUpwind grad(omega);
+    div(phi,k)          Gauss linearUpwind grad(k);
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;
+
+    // A good TVD scheme (vanLeer or Minmod): TVD, second order accurate, bounded
+}
+
+laplacianSchemes // Gauss <interpolationScheme> <snGradScheme>
+{
+    // A fully orthogonal scheme
+    default         Gauss linear corrected;
+
+    // A blending between a fully orthogonal scheme and a non-orthogonal scheme
+    // Generally, for non-orthogonality less than 70, psi = 1
+    // for non-orthogonality between 70 and 85, psi = 0.5
+    // non-orthogonality more than 85, psi = 0.333
+    default         Gauss linear limited psi;
+
+    // For a very good quality mesh with uniform cell size
+    default         Gauss linear orthogonal;
+
+    // An accurate numerical scheme on orthogonal meshes (with non-orthogonal corrections)
+    default         Gauss linear limited 1;
+
+    // A less accurate numerical scheme valid on non-orthogonal meshes (with non-orthogonal corrections)
+    default         Gauss linear limited 0.5;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected;
+
+    // For a very good quality mesh with uniform cell size
+    default         orthogonal;
+
+    // An accurate numerical scheme on orthogonal meshes (with non-orthogonal corrections)
+    default         limited 1;
+
+    // A less accurate numerical scheme valid on non-orthogonal meshes (with nonorthogonal corrections)
+    default         limited 0.5;
+}
+
+// ************************************************************************* //

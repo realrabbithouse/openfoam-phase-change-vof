@@ -1,0 +1,56 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// R134a at 3.8Mpa, TSat = 370.95K
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+// sigma = 1.526e-4
+// Lv = 51.856e3
+
+mixture
+{
+    specie
+    {
+        molWeight   102.03;
+    }
+    equationOfState
+    {
+        rho         720.15;
+    }
+    thermodynamics
+    {
+        Cp          6243.3; // Cp = 6243.3, Cv = 1127.9
+        Hf          0; 
+    }
+    transport
+    {
+        mu          5.5377e-5; // k = 52.406e-3, alphah = 1.1656e-4cm^2/s
+        Pr          6.5973;
+    }
+}
+
+
+// ************************************************************************* //

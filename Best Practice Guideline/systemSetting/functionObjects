@@ -1,0 +1,269 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+/*
+    1. functionObjects are specified in the controlDict dictionary and executed
+    at predefined intervals. All functionObjects are runtime modifiable.
+    2. Depending of the functionObject you are using, its output is saved in the directory
+    postProcessing or in the solution directory (time directories).
+    3. It is also possible to execute functionObject after the simulation is over, we will call
+    this running functionObject a-posteriori.
+    i.e. name_of_the_solver -postProcess –dict dictionary_location
+         simpleFoam -postProcess -dict system/functionObject –noZero (–time 500:2000, –latestTime)
+    
+    // i.e.
+    functions
+    {
+
+        function_object_name // User given Name
+        {
+            type function_object_to_use;
+
+            functionObjectLibs ("function_object_library.so");
+
+            enabled true; // Turn on/off functionObject
+
+            log true; // Show on screen the output of the functionObject
+
+            // Output frequency
+            writeControl outputTime;
+            timeStart 0;
+            timeEnd 20;
+
+            // ...
+            // functionObject keywords and sub-dictionaries // specific to functionObject
+            // ...
+        }
+
+        #include "externalFunctionObject"
+    }
+*/
+
+functions
+{
+
+minmaxdomin // Name of the folder where the output of the functionObject will be saved
+{
+    type fieldMinMax; // functionObject to use
+
+    functionObjectLibs ("libfieldFunctionObjects.so");
+
+    enabled true;
+
+    mode component;
+
+    writeControl timeStep;
+
+    writeInterval 1;
+
+    log true;
+
+    fields (p U);
+}
+
+water_in_domain
+{
+    type volRegion;
+
+    functionObjectLibs ("libfieldFunctionObjects.so");
+
+    enabled true;
+
+    writeControl timeStep; // outputTime;
+    writeInterval 1;
+
+    log true;
+
+    regionType all;
+
+    operation volIntegrate;
+
+    fields
+    (
+        alpha.water
+    );
+}
+
+// This sampling is done on-the-fly. All the information
+// sample by this functionObject is saved in the directory
+// ./postProcessing/probes
+probes
+{
+    type probes;
+    functionObjectLibs ("libsampling.so");
+
+    pobeLocations
+    (
+        (0.82450002 0 0.021)
+        (0.82450002 0 0.061)
+        (0.82450002 0 0.101)
+        (0.82450002 0 0.141)
+        (0.8035 0 0.161)
+        (0.7635 0 0.161)
+        (0.7235 0 0.161)
+        (0.6835 0 0.161)
+    );
+
+    fields
+    (
+        p p_rgh
+    );
+
+    writeControl timeStep;
+    writeInterval 1;
+}
+
+outlet_mass_flow_rate
+{
+    type surfaceRegion;
+    functionObjectLibs ("libfieldFunctionObjects.so");
+    writeControl timeStep;
+    writesInterval 1;
+    log true;
+    writeFields false;
+    regionType patch; // Compute functionObject in a boundary patch
+    name outlet; // patch name
+    operation sum;
+    fields (phi);
+}
+
+}
+
+// post-processing for heat pipe
+{
+
+    massConservation
+    {
+        type swakExpression;
+        valueType internalField;
+        verbose true;
+        accumulations 
+        (
+            // The weighted variants are based on the volumes
+            // of each cell
+            weightedAverage weightedSum
+        );
+        outputControlMode timeStep; // outputTime, timeStep
+        outputInterval 1;
+        writeStartTime 0;
+        expression "rho";
+    }
+
+    heatFlux
+    {
+        type patchExpression;
+        verbose true;
+        accumulations 
+        (
+            weightedSum
+        );
+        patches
+        (
+            heatingWall
+            bottom
+            coolingWall
+            top
+        );
+        aliases 
+        {
+            alpha1 alpha.water;
+        } 
+        variables
+        (
+            "k1=0.75;"
+            "k2=0.2473;"
+        );
+        outputControlMode timeStep;
+        outputInterval 1;
+        writeStartTime 0;
+        expression "snGrad(T)*(k1*alpha1+k2*(1-alpha1))";
+    }
+
+    maxDeltaP
+    {
+        type swakExpression;
+        valueType internalField;
+        verbose true;
+        accumulations 
+        (
+            max min average
+        );
+        variables
+        (
+            "pMin{internalField}=min(p);"
+        );
+        outputControlMode timeStep;
+        outputInterval 1;
+        writeStartTime 0;
+        expression "p-pMin";
+    }
+
+    NusseltNumber
+    {
+        type patchExpression;
+        verbose true;
+        accumulations 
+        (
+            weightedSum max min sum
+        );
+        patches
+        (
+            coolingWall
+            top
+        );
+        variables
+        (
+            "TInf=343;"
+            "L=0.06;"
+        );
+        outputControlMode timeStep;
+        outputInterval 1;
+        writeStartTime 0;
+        expression "L*snGrad(T)/(T-TInf)";
+    }
+
+    saturationTemperature
+    {
+        type swakExpression;
+        valueType internalField;
+        verbose true;
+        accumulations 
+        (
+            max min average
+        );
+        variables
+        (
+            "TSatMin{internalField}=min(TSat);"
+        );
+        outputControlMode timeStep;
+        outputInterval 1;
+        writeStartTime 0;
+        expression "TSat";
+    }
+
+}
+
+libs
+(
+    "libOpenFOAM.so"
+    "libgroovyBC.so"
+    "libsimpleSwakFunctionObjects.so"
+    "libswakTopoSources.so"
+    "libswakFunctionObjects.so"
+);
+
+// ************************************************************************* //

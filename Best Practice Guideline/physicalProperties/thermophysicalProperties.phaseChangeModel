@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+sigma // 表面张力系数
+{
+    type    constant;
+    sigma   0.058941;
+}
+
+latentHeatProperties // 相变潜热
+{
+    // 1
+    model       constant;
+    Lv          Lv [0 2 -2 0 0 0 0] 2.2564e6;
+
+    // 2.1
+    model       temperatureDependent;
+    Lv          polynomial // i.e. y = x^2 + 2.3x^3
+                (
+                    (1.2  2)
+                    (2.3  3)
+                );
+
+    // 2.2
+    model       temperatureDependent;
+    Lv          constant 2.2564e6;
+}
+
+saturationTemperatureProperties // 饱和温度
+{
+    // 1
+    model       constant;
+    TSat        TSat [0 0 0 1 0 0 0] 373;
+
+    // 2
+    model       Clapeyron;
+    T0          T0 [0 0 0 1 0 0 0] 373;
+    p0          p0 [1 -1 -2 0 0 0 0] 1e5;
+
+    // 3
+    model       pressureDependent;
+    TSat        constant 373;
+}
+
+phaseChangeProperties
+{
+    // Lee Model
+    model                   Lee;
+    rc                      rc [0 0 -1 0 0 0 0] 100; // condensation coefficient
+    rv                      rv [0 0 -1 0 0 0 0] 100; // evaporation coefficient
+
+    // Interface Equilibrium Model
+    model                   interfaceEquilibrium;
+    // 相变可能发生在全域, 而不仅仅在相界面吗?
+    global                  off; // dafault: off
+    oldFashion              off; // default: off
+    relaxationFactor        1.0; // default: 1.0
+    condThresh              0.5; // default: 0.5
+    evapThresh              0.5; // default: 0.5
+    // evapThresh: 0.01, 0.05; condThresh: 0.3, 0.5
+
+    // Schrage Model
+    model                   Schrage;
+    gamma                   1.0; // default: 1.0
+    interfaceAreaMethod     gradAlpha; // isoAlpha, gradAlpha, isoAdvection (不推荐)
+    // when interfaceAreaMethod == isoAlpha, this should be specified
+    isoAlphaVal             0.5;
+
+    // Sharp Interface Model
+    model                   sharpInterface;
+    interfaceAreaMethod     isoAlpha;
+    isExplicit              no; // default: yes
+    isoAlphaVal             0.5;
+
+    // Sharp Interface with Limiter
+    model                   limiterSharpInterface;
+    interfaceAreaMethod     isoAlpha;
+    limiter                 yes; // default: yes
+    isExplicit              no; // default: yes
+    isoAlphaVal             0.5;
+
+    // no phase change
+    model                   noPhaseChange;
+}
+
+// ************************************************************************* //

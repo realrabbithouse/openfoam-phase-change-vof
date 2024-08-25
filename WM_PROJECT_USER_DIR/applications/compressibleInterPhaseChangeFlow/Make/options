@@ -1,0 +1,40 @@
+EXE_INC = \
+    -I$(LIB_SRC)/finiteVolume/lnInclude \
+    -I$(LIB_SRC)/fvOptions/lnInclude \
+    -I$(LIB_SRC)/surfMesh/lnInclude \
+    -I$(LIB_SRC)/meshTools/lnInclude \
+    -I$(LIB_SRC)/dynamicMesh/lnInclude \
+    -I$(LIB_SRC)/dynamicFvMesh/lnInclude \
+    -I$(LIB_SRC)/transportModels/compressible/lnInclude \
+    -I$(LIB_SRC)/thermophysicalModels/basic/lnInclude \
+    -I$(LIB_SRC)/transportModels/twoPhaseMixture/lnInclude \
+    -I$(LIB_SRC)/TurbulenceModels/turbulenceModels/lnInclude \
+    -I$(LIB_SRC)/TurbulenceModels/compressible/lnInclude \
+    -I$(LIB_SRC)/TurbulenceModels/phaseCompressible/lnInclude \
+    -I$(LIB_SRC)/transportModels/geometricVoF/lnInclude \
+    -I$(LIB_SRC)/transportModels/interfaceProperties/lnInclude \
+    -I$(FOAM_SOLVERS)/multiphase/compressibleInterFoam/twoPhaseMixtureThermo/lnInclude \
+    -I$(FOAM_SOLVERS)/multiphase/compressibleInterFoam/VoFphaseCompressibleTurbulenceModels/lnInclude \
+    -I$(WM_PROJECT_USER_DIR)/src/phaseChangeModels/lnInclude
+
+EXE_LIBS = \
+    -lfiniteVolume \
+    -lfvOptions \
+    -lsurfMesh \
+    -lmeshTools \
+    -ldynamicMesh \
+    -ldynamicFvMesh \
+    -lcompressibleTransportModels \
+    -lfluidThermophysicalModels \
+    -lspecie \
+    -ltwoPhaseMixture \
+    -ltwoPhaseProperties \
+    -ltwoPhaseSurfaceTension \
+    -lturbulenceModels \
+    -lcompressibleTurbulenceModels \
+    -lgeometricVoF \
+    -linterfaceProperties \
+    -ltwoPhaseMixtureThermo \
+    -lVoFphaseCompressibleTurbulenceModels \
+    -L$(FOAM_USER_LIBBIN) \
+    -lphaseChangeModels

@@ -1,0 +1,224 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "alpha.liquid.*"
+    {
+        // smoothed alphal to reduce parasitic currents
+        smoothedCurvature   yes; // default no
+        smoothedCycles      2; // defalut 2
+
+        // isoAdvection with improved surface reconstruction
+        // i.e. compressibleInterIsoFoam, compressibleInterPhaseChangeFlow, interIsoFoam
+        // in OpenFOAM-v2006
+        nAlphaSubCycles 1; // defined in alphaControls.H
+        cAlpha          1; // defined in class interfaceProperties
+
+        reconstructionScheme isoAlpha; // plicRDF, gradAlpha
+        // Tolerance for search of isoFace giving specified VOF value
+        isoFaceTol      1e-8; // default 1e-8
+        // Tolerance for marking of surface cells:
+        // Those with surfCellTol_ < alpha1 < 1 - surfCellTol_
+        surfCellTol     1e-8; // default 1e-8
+        nAlphaBounds    3; // default 3
+        snapTol         1e-12; // default 0
+        clip            true; // default true
+        writeIsoFaces   false; // default false
+        writeSurfCells  false; // default false
+
+
+        // traditional MULES interface capturing solver
+        nAlphaCorr      2;
+        nAlphaSubCycles 1;
+        cAlpha          1;
+        // Apply the compression correction from the previous iteration
+        // Improves efficiency for steady-simulations but can only be applied
+        // once the alpha field is reasonably steady, i.e. fully developed
+        alphaApplyPrevCorr  false;
+
+        MULESCorr       yes;
+        nLimiterIter    8;
+
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
+        relTol          0;
+    }
+
+    ".*(rho|rhoFinal)"
+    {
+        solver          diagonal;
+    }
+
+    "pcorr.*"
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-6;
+            relTol          0;
+            smoother        DICGaussSeidel;
+        }
+        tolerance       1e-6;
+        relTol          0;
+        maxIter         100;
+    }
+
+    // Pressure Solver
+
+    // When solving multiphase problems, I have found that the GAMG solver might give
+    // problems when running in parallel, so be careful. The problem is mainly related to
+    // nCoarsestCells keyword, so usually I have to set a high value of cells (in the order
+    // 1000).
+    // The GAMG solver (generalized geometric-algebraic multigrid solver), can often be the
+    // optimal choice for solving the pressure equation. However, I have found that when
+    // using more than 1024 processors is better to use Newton-Krylov type solvers.
+    // For the pressure equation I usually start with a tolerance equal to 1e-5 and relTol
+    // equal to 0.01. After a while I change these values to 1e-6 and 0.0 respectively.
+
+    p_rgh
+    {
+        solver                  GAMG;
+        tolerance               1e-8;
+        relTol                  0.001; // 0.0 for p_rghFinal
+        smoother                DIC; // DIC;
+        nPreSweeps              0;
+        nPostSweeps             2;
+        cacheAgglomeration      on;
+        agglomerator            faceAreaPair;
+        nCellsInCoarsestLevel   1000;
+        mergeLevels             1;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        relTol                  0.0;
+        minIter                 3;
+        maxIter                 100;
+    }
+
+    // default
+    p_rgh
+    {
+        solver          GAMG;
+        tolerance       1e-8;
+        relTol          0.01;
+        smoother        DIC;
+    }
+
+    p_rghFinal
+    {
+        solver          PCG;
+        preconditioner
+        {
+            preconditioner  GAMG;
+            tolerance       1e-6;
+            relTol          0;
+            nVcycles        2;
+            smoother        DICGaussSeidel;
+            nPreSweeps      2;
+        }
+        tolerance       1e-8; /* Should be 1 to 2 orders of 
+                                 magnitude smaller than 
+                                 alpha.phase1 surfCellTol */
+        relTol          0;
+        maxIter         20;
+    }
+
+    // If I do not use the GAMG solver for the pressure, I often use the PCG solver.
+    p_rgh
+    {
+        solver              PCG;
+        preconditioner      DIC;
+        tolerance           1e-8;
+        relTol              0.01;
+        minIter             3;
+        maxIter             100;
+    }
+
+
+    "U.*"
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-8;
+        relTol          0;
+    }
+
+    // coupled method, solve all the velocity components at once
+    "U.*"
+    {
+        type            coupled;
+        solver          cPBiCCCG;
+        preconditioner  DILU;
+        tolerance       (1e-8 1e-8 1e-8);
+        relTol          (0 0 0);
+        minIter         3;
+    }
+
+    "(T|k|B|nuTilda).*"
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-8;
+        relTol          0;
+    }
+}
+
+PIMPLE
+{
+    // Set to yes for high Reynolds flows, where
+    // convection dominates (default value is yes)
+    momentumPredictor no;
+
+    transonic       no;
+
+    // Recommended value is 1 (equivalent to PISO).
+    // Increase to improve the stability of second
+    // order time discretization schemes (LES
+    // simulations). Increase for strongly coupled
+    // problems.
+    nOuterCorrectors 2;
+
+    // Recommended to use at least 3 correctors.
+    // It improves accuracy and stability. Use 4 or
+    // more for highly transient flows or strongly
+    // coupled problems..
+    nCorrectors     3;
+
+    // Recommend to use at least 1 corrector.
+    // Increase the value for bad quality meshes.
+    nNonOrthogonalCorrectors 0;
+    
+    • Non-orthogonality between 70 and 85:
+    nNonOrthogonalCorrectors 3;
+    • Non-orthogonality between 60 and 70:
+    nNonOrthogonalCorrectors 2;
+    • Non-orthogonality less than 60:
+    nNonOrthogonalCorrectors 1;
+
+    // For incompressible solver 'thermoPhaseChangeFlow'.
+    pRefPoint       (0 0 0);
+    pRefCell        0;
+    pRefValue       0;
+}
+
+
+// ************************************************************************* //

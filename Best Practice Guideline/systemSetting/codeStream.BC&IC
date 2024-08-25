@@ -1,0 +1,154 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  6                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+/*
+
+1.Hereafter we will use codeStream to implement new boundary conditions,
+but have in mind that codeStream can be used in any dictionary.
+
+2.The source code and binaries are automatically generated and copied in the
+directory dynamicCode of the current case.
+
+3. OpenFOAM® also includes the boundary conditions codedFixedValue and
+codedMixed. These boundary conditions are derived from codeStream and work in a
+similar way. They use a friendlier notation and let you access more information 
+of the simulation database (e.g. time).
+
+// Boundary condition using codeStream
+patch-name
+{
+    type fixedValue;
+    value #codeStream // Use codeStream to set the value of the boundary condition
+    {
+        // Files needed for compilation
+        codeInclude
+        #{
+            #include "fvCFD.H"
+        #};
+    
+        // Compilation options
+        codeOptions
+        #{
+            -I$(LIB_SRC)/finiteVolume/lnInclude \
+            -I$(LIB_SRC)/meshTools/lnInclude
+        #};
+
+        // Libraries needed for compilation
+        codeLibs
+        #{
+            -lmeshTools \
+            -lfiniteVolume
+        #};
+
+        code
+        #{
+            // Insert your code here.
+        #};
+    };
+}
+
+*/
+
+// Solution initialization using codeStream
+internalField #codeStream
+{
+        codeInclude
+        #{
+            #include "fvCFD.H"
+        #};
+
+        codeOptions
+        #{
+            -I$(LIB_SRC)/finiteVolume/lnInclude \
+            -I$(LIB_SRC)/meshTools/lnInclude
+        #};
+
+        codeLibs
+        #{
+            -lmeshTools \
+            -lfiniteVolume
+        #};
+
+        code
+        #{
+
+        #};
+};
+
+
+boundaryField
+{
+    velocity-inlet
+    {
+        type            fixedValue;
+        value           #codeStream
+        {
+            codeInclude
+            #{
+                #include "fvCFD.H"
+            #};
+
+            codeOptions
+            #{
+                -I$(LIB_SRC)/finiteVolume/lnInclude \
+                -I$(LIB_SRC)/meshTools/lnInclude
+            #};
+
+            // libs needed to visualize B.C. in paraview
+            codeLibs
+            #{
+                -lmeshTools \
+                -lfiniteVolume
+            #};
+
+            code
+            #{
+                const IOdictionary& d = static_cast<const IOdictionary&>
+                (
+                    dict.parent().parent()
+                );
+                const fvMesh& mesh = refCast<const fvMesh>(d.db());
+                const label id = mesh.boundary().findPatchID("velocity-inlet");
+                const fvPatch& patch = mesh.boundary()[id];
+
+                vectorField U(patch.size(), vector(0, 0, 0));
+
+                const scalar pi = constant::mathematical::pi;
+                const scalar U_0   = 2.;    // max velocity
+                const scalar p_ctr = 8.;    // patch center
+                const scalar p_r   = 8.;    // patch radius
+
+                forAll(U, i)
+                {
+                    const scalar y = patch.Cf()[i][1];
+                    U[i] = vector(U_0*(1 - (pow(y - p_ctr, 2))/(p_r*p_r)), 0., 0.);
+                }
+
+                writeEntry(os, U); // Write output to input dictionary
+                U.writeEntry("", os); // for OpenFOAM+
+            #};
+        };
+    }
+
+    frontAndBackPlanes
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

@@ -1,0 +1,6 @@
+include/alphaCourantNo.C
+include/solidRegionDiffNo.C
+include/fluidCourantNo.C
+chtCompEvapCondFlow.C
+
+EXE = $(FOAM_USER_APPBIN)/chtCompEvapCondFlow

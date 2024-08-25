@@ -1,0 +1,107 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+// thermoType
+// {
+//     type            heRhoThermo;
+//     mixture         pureMixture;
+//     properties      liquid;
+//     energy          sensibleInternalEnergy;
+// }
+
+// mixture
+// {
+//     H2O;
+// }
+
+// sigma = 0.058941
+// Lv = 2256.8e3
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState rhoConst; // perfectFluid;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+mixture
+{
+    specie
+    {
+        molWeight   18.0;
+    }
+    equationOfState
+    {
+        // R           3000;
+        // rho0        1027;
+        rho         958.46;
+    }
+    thermodynamics
+    {
+        Cv          4195;
+        Hf          0;
+    }
+    transport
+    {
+        mu          2.82e-4;
+        Pr          1.75;
+    }
+}
+
+/*
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState perfectFluid;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+mixture
+{
+    specie
+    {
+        molWeight   18.0;
+    }
+    equationOfState
+    {
+        R           3000;
+        rho0        1027;
+    }
+    thermodynamics
+    {
+        Cv          4195;
+        Hf          0;
+    }
+    transport
+    {
+        mu          3.645e-4;
+        Pr          2.289;
+    }
+}
+*/
+
+
+// ************************************************************************* //

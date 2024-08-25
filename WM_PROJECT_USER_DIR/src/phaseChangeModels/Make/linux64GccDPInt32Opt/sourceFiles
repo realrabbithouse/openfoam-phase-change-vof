@@ -1,0 +1,21 @@
+SOURCE = \
+phaseChangeModel/interfaceMarker/interfaceMarker.C \
+phaseChangeModel/latentHeatModels/latentHeatModel/latentHeatModel.C \
+phaseChangeModel/latentHeatModels/latentHeatModel/latentHeatModelNew.C \
+phaseChangeModel/latentHeatModels/constant/constantLv.C \
+phaseChangeModel/latentHeatModels/temperatureDependent/temperatureDependentLatentHeat.C \
+phaseChangeModel/saturationTemperatureModels/saturationTemperatureModel/saturationTemperatureModel.C \
+phaseChangeModel/saturationTemperatureModels/saturationTemperatureModel/saturationTemperatureModelNew.C \
+phaseChangeModel/saturationTemperatureModels/constant/constantTSat.C \
+phaseChangeModel/saturationTemperatureModels/Clapeyron/Clapeyron.C \
+phaseChangeModel/saturationTemperatureModels/pressureDependent/pressureDependentSaturationTemperature.C \
+phaseChangeModel/phaseChangeModel.C \
+phaseChangeModel/phaseChangeModelNew.C \
+noPhaseChange/noPhaseChange.C \
+Lee/Lee.C \
+interfaceEquilibrium/interfaceEquilibrium.C \
+Schrage/Schrage.C \
+sharpInterface/sharpInterface.C \
+sharpInterface/limiterSharpInterface.C \
+
+# sources
